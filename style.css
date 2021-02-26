@@ -1,10 +1,55 @@
-body {
-    background: black;
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5vw;
+    height: 10vh;
 }
 
-main {
-    font-family: 'SF Mono', monospace;
+.logo {
+    flex: 1;
+    font-size: 2em;
+}
+
+nav {
+    flex: 1;
+    font-size: 1.2em;
+}
+
+.nav-link {
+    text-decoration: none;
     color: whitesmoke;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    margin-top: 4px;
+    background: whitesmoke;
+    color: whitesmoke;
+    transition: width .2s;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+hr {
+    border-color: rgb(41, 41, 41);
+}
+
+body {
+    background: black;
+    color: whitesmoke;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #hellow {
@@ -13,5 +58,5 @@ main {
     margin: 0 10px;
     position: absolute;
     top: 30vh;
-
+    font-family: 'SF Mono', monospace;
 }
