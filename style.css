@@ -8,27 +8,36 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 5vw;
+    /* background: gray; */
     height: 10vh;
-}
-
-.logo {
-    flex: 1;
-    font-size: 2em;
 }
 
 nav {
     flex: 1;
     /* background: red; */
+    height: inherit;
+}
+
+.logo {
+    flex: 1;
+    font-size: 2em;
+    margin-left: 5vw;
+}
+
+.nav-links {
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    height: inherit;
+    list-style: none;
 }
 
 .nav-link {
     text-decoration: none;
     font-size: 1.2em;
-    padding: 15px;
-    display: inline-block;
+    display: block;
     color: whitesmoke;
-    background: black;
+    /* background: black; */
 }
 
 .nav-link:hover::after {
@@ -46,11 +55,6 @@ nav {
     transition: width .2s;
 }
 
-.nav-links {
-    display: flex;
-    justify-content:space-around;
-    list-style: none;
-}
 
 /* hr {
     border-color: rgb(41, 41, 41);
