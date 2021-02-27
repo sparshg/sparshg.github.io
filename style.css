@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 header {
     display: flex;
     align-items: center;
@@ -13,12 +19,16 @@ header {
 
 nav {
     flex: 1;
-    font-size: 1.2em;
+    /* background: red; */
 }
 
 .nav-link {
     text-decoration: none;
+    font-size: 1.2em;
+    padding: 15px;
+    display: inline-block;
     color: whitesmoke;
+    background: black;
 }
 
 .nav-link:hover::after {
@@ -38,13 +48,13 @@ nav {
 
 .nav-links {
     display: flex;
-    justify-content: space-evenly;
+    justify-content:space-around;
     list-style: none;
 }
 
-hr {
+/* hr {
     border-color: rgb(41, 41, 41);
-}
+} */
 
 body {
     background: black;
