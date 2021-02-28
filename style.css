@@ -10,37 +10,45 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background: gray; */
     height: 10vh;
-    margin: 0 5vw;
+    width: 90%;
+    margin: auto;
+    /* background: gray; */
 }
 
 nav {
-    flex: 1;
     /* background: red; */
+    position: fixed;
     height: inherit;
+    right: 5vw;
+    width: 40%;
+
 }
 
 .logo {
     flex: 1;
+    display: flex;
+    /* background-color: crimson; */
     font-size: 2em;
+    height: inherit;
+    align-items: center;
 }
 
 .nav-links {
     display: flex;
     justify-content:space-around;
     align-items: center;
-    height: inherit;
     list-style: none;
+    height: inherit;
+    /* position: ; */
 }
 
 .nav-link {
     text-decoration: none;
     font-size: 1.4em;
     display: block;
-    position: fixed;
     color: whitesmoke;
-    /* background: black; */
+    background: black;
 }
 
 .nav-link:hover::after {

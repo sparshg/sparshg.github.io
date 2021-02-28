@@ -18,6 +18,14 @@ function Write() {
 function ChangeText(text) {
 
     clearTimeout(animTimeout);
+    // When reloading, 
+    if (document.getElementById("terminal").innerText.length <= 3) {
+        termText = text;
+        i = document.getElementById("terminal").innerText.length - 1;
+        Write();
+        return
+    }
+
     let initial = termText.split(" ");
     let final = text.split(" ");
     let common;
@@ -29,8 +37,11 @@ function ChangeText(text) {
             break;
         }
     }
+    // console.log(termText, text, common, i)
+
     function deleteUncommon() {
-        let t = document.getElementById("terminal").innerText
+        let t = document.getElementById("terminal").innerText;
+        // console.log(t)
         // If common and current text not equal && initial and final text not equal
         if (t.slice(0, t.length - 1) !== common && termText !== text) {
             document.getElementById("terminal").innerText = t.slice(0, t.length - 2) + cursorChar;
@@ -47,6 +58,7 @@ function ChangeText(text) {
     }
     deleteUncommon();
 }
+
 Write();
 
 gsap.timeline({
@@ -58,7 +70,7 @@ gsap.timeline({
         // markers: true
     }
 })
-    .to("#terminal", { scale: 0.6, top: "4vh" })
+    .to("#terminal", { scale: 0.6, top: "2vh", marginLeft: "3vw" })
 
 ScrollTrigger.create({
     trigger: ".sec2",
@@ -72,6 +84,6 @@ ScrollTrigger.create({
     trigger: ".sec3",
     start: "top center",
     end: "top center",
-    onEnter: () => { ChangeText("> cd contacts") },
+    onEnter: () => { ChangeText("> cd contact") },
     onEnterBack: () => { ChangeText("> cd projects") }
 })
