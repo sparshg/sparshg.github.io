@@ -1,45 +1,49 @@
-let termtext = "> echo Hello, World!"
-let cursorchar = "▉";
+let termText = "> echo Hello, World!"
+let cursorChar = "▉";
 let sdelay = 50;
-let ldelay = 200;
+let ldelay = 150;
+let animTimeout;
 let i = 0;
 
 function Write() {
-    if (i < termtext.length) {
-        let t = document.getElementById("terminal").innerHTML;
-        document.getElementById("terminal").innerHTML = t.slice(0, t.length - 1) + termtext.charAt(i) + cursorchar;
-        let delay = (i == 6) ? ldelay : sdelay;
+    if (i < termText.length) {
+        let t = document.getElementById("terminal").innerText;
+        document.getElementById("terminal").innerText = t.slice(0, t.length - 1) + termText.charAt(i) + cursorChar;
+        let delay = (i == termText.match(/> \w*/)[0].length) ? ldelay : sdelay;
         i++;
-        setTimeout(Write, delay);
+        animTimeout = setTimeout(Write, delay);
     }
 }
 
 function ChangeText(text) {
 
-    let initial = termtext.split(" ");
+    clearTimeout(animTimeout);
+    let initial = termText.split(" ");
     let final = text.split(" ");
     let common;
     for (let j = 0; j < final.length; j++) {
         if (final[j] !== initial[j]) {
             final = final.slice(0, j);
             common = final.join(" ");
+            common += " ";
             break;
         }
     }
-
     function deleteUncommon() {
-        let t = document.getElementById("terminal").innerHTML;
-        if (termtext !== common) {
-            termtext = termtext.slice(0, termtext.length - 1);
-            document.getElementById("terminal").innerHTML = termtext + cursorchar;
+        let t = document.getElementById("terminal").innerText
+        // If common and current text not equal && initial and final text not equal
+        if (t.slice(0, t.length - 1) !== common && termText !== text) {
+            document.getElementById("terminal").innerText = t.slice(0, t.length - 2) + cursorChar;
             delay = sdelay;
-            setTimeout(deleteUncommon, delay);
+            i--;
+            animTimeout = setTimeout(deleteUncommon, delay);
         } else {
-            termtext = text;
-            i = common.length;
+            if (termText !== text) {
+                termText = text;
+                i = common.length;
+            }
             Write();
         }
-
     }
     deleteUncommon();
 }
@@ -54,9 +58,20 @@ gsap.timeline({
         // markers: true
     }
 })
-    .to("#terminal", { scale: 0.7, top: "4vh" })
+    .to("#terminal", { scale: 0.6, top: "4vh" })
 
 ScrollTrigger.create({
     trigger: ".sec2",
-    onEnter: () => { ChangeText("> echo Hello, Earth!") }
+    start: "top center",
+    end: "top center",
+    onEnter: () => { ChangeText("> cd projects") },
+    onEnterBack: () => { ChangeText("> echo Hello, World!") }
+})
+
+ScrollTrigger.create({
+    trigger: ".sec3",
+    start: "top center",
+    end: "top center",
+    onEnter: () => { ChangeText("> cd contacts") },
+    onEnterBack: () => { ChangeText("> cd projects") }
 })
