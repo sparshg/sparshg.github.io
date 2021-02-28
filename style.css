@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Ubuntu&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +12,7 @@ header {
     justify-content: center;
     /* background: gray; */
     height: 10vh;
+    margin: 0 5vw;
 }
 
 nav {
@@ -21,7 +24,6 @@ nav {
 .logo {
     flex: 1;
     font-size: 2em;
-    margin-left: 5vw;
 }
 
 .nav-links {
@@ -34,8 +36,9 @@ nav {
 
 .nav-link {
     text-decoration: none;
-    font-size: 1.3em;
+    font-size: 1.4em;
     display: block;
+    position: fixed;
     color: whitesmoke;
     /* background: black; */
 }
@@ -70,7 +73,7 @@ body {
     min-height: 90vh;
 }
 
-#hellow {
+#terminal {
     font-size: 3em;
     font-weight: 800;
     margin: 0 10px;
