@@ -34,7 +34,7 @@ nav {
 
 .nav-link {
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.3em;
     display: block;
     color: whitesmoke;
     /* background: black; */
@@ -66,11 +66,20 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
+.sec1 {
+    min-height: 90vh;
+}
+
 #hellow {
     font-size: 3em;
     font-weight: 800;
     margin: 0 10px;
-    position: absolute;
+    position: fixed;
+    transform-origin: left top;
     top: 30vh;
-    font-family: 'SF Mono', monospace;
+    font-family: 'Source Code Pro', monospace;
+}
+
+.sec2 {
+    min-height: 100vh;
 }

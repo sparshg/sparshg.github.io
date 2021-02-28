@@ -15,3 +15,14 @@ function typeWriterEffect() {
 }
 
 typeWriterEffect();
+gsap.timeline({
+    scrollTrigger: {
+        trigger: ".sec2",
+        start: "top bottom",
+        end: "top center",
+        scrub: true,
+        markers: true
+    }
+})
+    .to("#hellow", { scale: 0.5, top: "2vh" })
+console.log(1)
