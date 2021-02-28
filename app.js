@@ -42,7 +42,7 @@ function ChangeText(text) {
                 termText = text;
                 i = common.length;
             }
-            Write();
+            setTimeout(Write, ldelay);
         }
     }
     deleteUncommon();
