@@ -13,16 +13,6 @@ header {
     height: 10vh;
     width: 90%;
     margin: auto;
-    /* background: gray; */
-}
-
-nav {
-    /* background: red; */
-    position: fixed;
-    height: inherit;
-    right: 5vw;
-    width: 40%;
-
 }
 
 .logo {
@@ -32,6 +22,16 @@ nav {
     font-size: 2em;
     height: inherit;
     align-items: center;
+}
+
+nav {
+    /* background: red; */
+    background: black;
+    position: fixed;
+    height: inherit;
+    top: 0;
+    right: 5vw;
+    width: 40%;
 }
 
 .nav-links {
@@ -48,7 +48,7 @@ nav {
     font-size: 1.4em;
     display: block;
     color: whitesmoke;
-    background: black;
+    /* background: black; */
 }
 
 .nav-link:hover::after {
@@ -97,3 +97,18 @@ body {
 .sec3 {
     min-height: 100vh;
 }
+
+@media only screen and (max-width: 768px) {
+    .logo {
+        flex: 0;
+    }
+    header {
+        height: 15vh;;
+    }
+    nav {
+        top: 90%;
+        right: 0;
+        width: 100%;
+        height: 10vh;
+    }
+}    
