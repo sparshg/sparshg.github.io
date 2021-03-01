@@ -37,7 +37,7 @@ nav {
     display: flex;
     justify-content:space-around;
     align-items: center;
-    margin: 5px;
+    /* margin: 5px; */
     list-style: none;
     height: inherit;
     /* position: ; */
@@ -83,12 +83,16 @@ body {
 
 #terminal {
     /* background: red; */
+    display: flex;
     font-size: 48px;
+    font-size: min(48px, max(5vw, 8vh));
     font-weight: 800;
-    margin: 0 10px;
     position: fixed;
-    transform-origin: left top;
+    /* transform-origin: left top; */
     top: 30vh;
+    height: 10vh;
+    align-items: flex-start;
+    /* padding: 5vh 0; */
     font-family: 'Source Code Pro', monospace;
 }
 
@@ -99,7 +103,7 @@ body {
     min-height: 100vh;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 765px) {
     .logo {
         flex: 0;
     }
