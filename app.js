@@ -70,7 +70,7 @@ gsap.timeline({
         // markers: true
     }
 })
-    .to("#terminal", { fontSize: "28px", top: 0, margin: "-0.5vh 3vw", y: "+35%" })
+    .to("#terminal", { fontSize: "28px", top: window.innerHeight * 0.05 - 10, margin: "-0.5vh 3vw" })
 
 ScrollTrigger.create({
     trigger: ".sec2",

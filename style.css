@@ -19,7 +19,8 @@ header {
     flex: 1;
     display: flex;
     /* background-color: crimson; */
-    font-size: 2em;
+    /* font-size: 2em; */
+    font-size: max(2.5vw, 4.5vh);
     height: inherit;
     align-items: center;
 }
@@ -30,20 +31,22 @@ nav {
     position: fixed;
     height: inherit;
     right: 5vw;
-    width: 40%;
+    width: 50%;
 }
 
 .nav-links {
     display: flex;
     justify-content:space-around;
     align-items: center;
+    margin-top: 5px;
     list-style: none;
     height: inherit;
 }
 
 .nav-link {
     text-decoration: none;
-    font-size: 1.4em;
+    /* font-size: 1.4em; */
+    font-size: max(1.8vw, 3vh);
     display: block;
     color: whitesmoke;
     /* background: black; */
@@ -76,8 +79,8 @@ body {
 
 #terminal {
     /* background: red; */
-    font-size: 48px;
-    font-size: min(48px, max(5vw, 8vh));
+    /* font-size: 48px; */
+    font-size: max(5vw, 5.8vh);
     font-weight: 800;
     position: fixed;
     top: 30vh;
