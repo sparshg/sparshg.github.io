@@ -29,7 +29,6 @@ nav {
     background: black;
     position: fixed;
     height: inherit;
-    top: 0;
     right: 5vw;
     width: 40%;
 }
@@ -38,6 +37,7 @@ nav {
     display: flex;
     justify-content:space-around;
     align-items: center;
+    margin: 5px;
     list-style: none;
     height: inherit;
     /* position: ; */
@@ -82,7 +82,8 @@ body {
 }
 
 #terminal {
-    font-size: 3em;
+    /* background: red; */
+    font-size: 48px;
     font-weight: 800;
     margin: 0 10px;
     position: fixed;
@@ -110,5 +111,8 @@ body {
         right: 0;
         width: 100%;
         height: 10vh;
+    }
+    .nav-links {
+        margin: 0;
     }
 }    
