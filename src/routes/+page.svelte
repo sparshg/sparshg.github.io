@@ -1,35 +1,19 @@
-<div class="flex mx-12 my-16">
-	<div class="w-3/5">
+<script lang="ts">
+	import Project from '$lib/project.svelte';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+</script>
+
+<div class="lg:flex mx-12 my-16">
+	<div class="lg:w-7/12 max-lg:w-0" />
+	<div class="lg:fixed lg:w-7/12">
 		<h1 class="font-bold text-6xl mb-7">Sparsh Goenka</h1>
 		<p class="text-3xl font-mono">> echo hello World</p>
 	</div>
-	<div class="w-2/5">
-		<div class="card bg-base-200 p-0 rounded-2xl hover:scale-105 transition duration-300">
-			<figure>
-				<img
-					src="https://raw.githubusercontent.com/sparshg/asteroids-genetic/main/assets/demo.png"
-					alt="Asteroids"
-				/>
-			</figure>
-			<div class="card-body">
-				<h2 class="card-title">
-					Interactive AI Training Simulation
-					<div class="badge badge-secondary">NEW</div>
-				</h2>
-				<p>
-					Train your own AI to play asteroids game using neural networks and genetic algorithm that
-					uses the rules of natural selection to evolve. Save the best AI or load it later or play
-					the game yourself!
-				</p>
-				<div class="card-actions justify-between pt-2">
-					<div>
-						<div class="badge badge-outline">Rust</div>
-					</div>
-					<div>
-						<div class="badge badge-outline">Try</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	<div class="lg:w-5/12 max-lg:grid max-lg:justify-between md:grid-cols-2">
+		{#each data.projects as project}
+			<Project class="mb-6 max-lg:mr-4 max-lg:w-" {project} />
+		{/each}
 	</div>
 </div>
