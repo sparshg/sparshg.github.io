@@ -21,7 +21,7 @@
 						href={project.links.find((link) => link.platform === 'Web')?.link}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="link badge badge-secondary p-3 ml-2"
+						class="link badge badge-neutral p-3 ml-2"
 					>
 						Web
 						<Icon icon="link" />
@@ -32,7 +32,7 @@
 						href={project.links.find((link) => link.platform === 'Youtube')?.link}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="link badge badge-secondary p-3 ml-2"
+						class="link badge badge-neutral p-3 ml-2"
 					>
 						<Icon icon="youtube" />
 						<Icon icon="link" />
@@ -43,7 +43,7 @@
 						href={project.links.find((link) => link.platform === 'PlayStore')?.link}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="link badge badge-secondary p-3 ml-2"
+						class="link badge badge-neutral p-3 ml-2"
 					>
 						<Icon icon="playstore" />
 						<Icon icon="link" />
@@ -54,7 +54,7 @@
 						href={project.links.find((link) => link.platform === 'Itch')?.link}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="link badge badge-secondary p-3 ml-2"
+						class="link badge badge-neutral p-3 ml-2"
 					>
 						<Icon icon="itch" />
 						<Icon icon="link" />
@@ -65,7 +65,7 @@
 				href={project.repo}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="badge badge-secondary gap-1 p-3 transition hover:border-b-base-content"
+				class="badge badge-neutral gap-1 p-3 transition hover:border-b-base-content"
 			>
 				<Icon icon="star" />
 				{project.stars}

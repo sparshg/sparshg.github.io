@@ -3,7 +3,7 @@
 	let charDelay = 50;
 	let wordDelay = 100;
 
-	let text = 'echo Hello World wfwf wf wfffff';
+	let text = '';
 	let state: 'typing' | 'deleting' | 'idle' = 'idle';
 	let blinking = false;
 	let interval: number;
