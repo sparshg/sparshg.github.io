@@ -28,8 +28,6 @@
 				</div>
 			</div>
 
-            <Icon 
-
 			<label class="swap swap-rotate">
 				<input type="checkbox" class="theme-controller" value="cupcake" />
 				<Icon icon="sun" />
