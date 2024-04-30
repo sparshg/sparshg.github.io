@@ -65,18 +65,17 @@
 	}, 650);
 
 	$: input, deleteThenType();
+
+	const cursor = '<div class="bg-base-content inline-block">.</div>';
 </script>
 
-<div class="flex text-3xl font-mono min-h-20">
+<div class="flex text-xl md:text-3xl font-mono min-h-20">
 	<div class="mr-5">></div>
 	<div>
 		{#if text[text.length - 1] === ' '}
-			{text.slice(0, -1)}&nbsp;
+			{text.slice(0, -1)}&nbsp;{@html state !== 'idle' || blinking ? cursor : ''}
 		{:else}
-			{text}
-		{/if}
-		{#if state !== 'idle' || blinking}
-			<div class="bg-base-content inline-block {text.length > 0 ? '-ml-4' : ''}">.</div>
+			{text}{@html state !== 'idle' || blinking ? cursor : ''}
 		{/if}
 	</div>
 </div>
