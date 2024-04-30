@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { selected } from '$lib/stores';
+	import { text } from '$lib/stores';
 	import type { ProjectData } from '../routes/+page';
 	import Icon from './icon.svelte';
 
@@ -17,6 +18,7 @@
 		const el = document.querySelector(target.getAttribute('id'));
 		if (!el) return;
 		$selected = target.getAttribute('id').slice(1);
+		$text = 'cd ~/projects/' + $selected.toLowerCase();
 		el.scrollIntoView({
 			behavior: 'smooth',
 			block: 'center'

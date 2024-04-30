@@ -72,8 +72,8 @@ const projects: ProjectData[] = [
         created_at: undefined,
     },
     {
-        title: "PID Controller Simulation",
-        description: "PID controller simulation with many adjustable parameters and real-time graph plotting. Physics engine implemented from scratch with Range-Kutta 4 integration.",
+        title: "PID Controller",
+        description: "A PID controller simulation with many adjustable parameters and real-time graph plotting. Physics engine implemented from scratch with Range-Kutta 4 integration.",
         repo: 'https://github.com/sparshg/pid-balancer',
         image: '<img src=https://github.com/sparshg/pid-balancer/assets/43041139/0f4e9d4b-115e-437e-82c4-6cbdcc593822 />',
         tags: ['Rust', 'WASM'],
@@ -182,13 +182,13 @@ export const load = (async ({ fetch, setHeaders }) => {
 
     if (projects[0].created_at === undefined) {
         for (let project of projects) {
-            // let repo = project.repo.split('/').slice(-2).join('/');
-            // let res = await fetch(`https://api.github.com/repos/${repo}`);
-            // let data = await res.json();
-            // project.stars = data.stargazers_count;
-            // project.created_at = new Date(parseInt(data.created_at.slice(0, 4)), parseInt(data.created_at.slice(5, 7)) - 1, parseInt(data.created_at.slice(8, 10)));
-            project.stars = 0;
-            project.created_at = new Date("2022-01-01");
+            let repo = project.repo.split('/').slice(-2).join('/');
+            let res = await fetch(`https://api.github.com/repos/${repo}`);
+            let data = await res.json();
+            project.stars = data.stargazers_count;
+            project.created_at = new Date(parseInt(data.created_at.slice(0, 4)), parseInt(data.created_at.slice(5, 7)) - 1, parseInt(data.created_at.slice(8, 10)));
+            // project.stars = 0;
+            // project.created_at = new Date("2022-01-01");
         }
     }
 

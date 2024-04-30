@@ -4,7 +4,7 @@
 	import Timeline from '$lib/timeline.svelte';
 	import type { PageData } from './$types';
 	import Icon from '$lib/icon.svelte';
-	import { selected } from '$lib/stores';
+	import { text } from '$lib/stores';
 
 	export let data: PageData;
 </script>
@@ -14,7 +14,7 @@
 	<div class="lg:fixed lg:w-[45%] lg:h-[calc(100vh-7rem)] flex flex-col justify-between">
 		<div>
 			<h1 class="font-bold text-6xl mb-7">Sparsh Goenka</h1>
-			<Typewriter input="cd ~/projects/{$selected.toLowerCase()}" />
+			<Typewriter input={$text} />
 		</div>
 		<Timeline
 			projects={data.projects.toSorted((a, b) =>
@@ -34,6 +34,7 @@
 						target="_blank"
 						rel="noopener noreferrer"
 						class="link badge badge-accent rounded-full py-4 px-3 transition hover:border-b-base-content"
+						on:mouseenter={() => ($text = 'cd ~/contacts/' + social.icon)}
 					>
 						<Icon icon={social.icon} class="size-4 mr-2" />
 						<Icon icon="link" />

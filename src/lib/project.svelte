@@ -2,16 +2,16 @@
 	import Icon from './icon.svelte';
 	import type { ProjectData } from '../routes/+page';
 	import { selected } from './stores';
+	import { text } from './stores';
 	export let project: ProjectData;
-
-	function updateTimeline() {
-		$selected = project.title.replaceAll(' ', '-');
-	}
 </script>
 
 <div
 	class="card bg-base-300 rounded-2xl hover:scale-105 transition duration-300 {$$props.class}"
-	on:mouseenter={updateTimeline}
+	on:mouseenter={() => {
+		$selected = project.title.replaceAll(' ', '-');
+		$text = 'cd ~/projects/' + $selected.toLowerCase();
+	}}
 	role="presentation"
 >
 	<a href={project.repo} target="_blank" rel="noopener noreferrer">

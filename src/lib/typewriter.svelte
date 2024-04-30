@@ -67,17 +67,16 @@
 	$: input, deleteThenType();
 </script>
 
-<div class="flex">
-	<p class="text-3xl font-mono">
-		>{#if text[text.length - 1] === ' '}
-			&nbsp{text.slice(0, -1)}&nbsp;
-		{:else if text.length > 0}
-			&nbsp{text}
+<div class="flex text-3xl font-mono">
+	<div class="mr-5">></div>
+	<div>
+		{#if text[text.length - 1] === ' '}
+			{text.slice(0, -1)}&nbsp;
 		{:else}
-			&nbsp;
+			{text}
 		{/if}
-	</p>
-	{#if state !== 'idle' || blinking}
-		<div class="bg-base-content ml-0.5">.....</div>
-	{/if}
+		{#if state !== 'idle' || blinking}
+			<div class="bg-base-content inline-block {text.length > 0 ? '-ml-4' : ''}">.</div>
+		{/if}
+	</div>
 </div>
