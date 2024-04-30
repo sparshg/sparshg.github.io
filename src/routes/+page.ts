@@ -11,7 +11,32 @@ export type ProjectData = {
     created_at: Date | undefined;
 };
 
+export type Social = {
+    icon: IconType;
+    link: string;
+};
+
 export type Platform = 'Web' | 'PlayStore' | 'AppStore' | 'Win' | 'Mac' | 'Linux' | 'Youtube' | 'Itch' | 'Android';
+export type IconType = 'link' | 'star' | 'star-filled' | 'youtube' | 'playstore' | 'itch' | 'sun' | 'moon' | 'github' | 'linkedin' | 'email';
+
+const socials: Social[] = [
+    {
+        icon: 'github',
+        link: 'https://github.com/sparshg'
+    },
+    {
+        icon: 'linkedin',
+        link: 'https://www.linkedin.com/in/sparshgoenka'
+    },
+    {
+        icon: 'youtube',
+        link: 'https://www.youtube.com/c/radiium'
+    },
+    {
+        icon: 'email',
+        link: 'mailto: sparshg.contact@gmail.com'
+    },
+];
 
 const projects: ProjectData[] = [
     {
@@ -157,15 +182,15 @@ export const load = (async ({ fetch, setHeaders }) => {
 
     if (projects[0].created_at === undefined) {
         for (let project of projects) {
-            let repo = project.repo.split('/').slice(-2).join('/');
-            let res = await fetch(`https://api.github.com/repos/${repo}`);
-            let data = await res.json();
-            project.stars = data.stargazers_count;
-            project.created_at = new Date(parseInt(data.created_at.slice(0, 4)), parseInt(data.created_at.slice(5, 7)) - 1, parseInt(data.created_at.slice(8, 10)));
-            // project.stars = 0;
-            // project.created_at = new Date("2022-01-01");
+            // let repo = project.repo.split('/').slice(-2).join('/');
+            // let res = await fetch(`https://api.github.com/repos/${repo}`);
+            // let data = await res.json();
+            // project.stars = data.stargazers_count;
+            // project.created_at = new Date(parseInt(data.created_at.slice(0, 4)), parseInt(data.created_at.slice(5, 7)) - 1, parseInt(data.created_at.slice(8, 10)));
+            project.stars = 0;
+            project.created_at = new Date("2022-01-01");
         }
     }
 
-    return { projects };
+    return { projects, socials };
 }) satisfies PageLoad;
