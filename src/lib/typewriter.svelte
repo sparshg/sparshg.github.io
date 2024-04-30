@@ -67,7 +67,7 @@
 	$: input, deleteThenType();
 </script>
 
-<div class="flex text-3xl font-mono">
+<div class="flex text-3xl font-mono min-h-20">
 	<div class="mr-5">></div>
 	<div>
 		{#if text[text.length - 1] === ' '}
