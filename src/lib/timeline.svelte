@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { selected } from '$lib/stores';
 	import type { ProjectData } from '../routes/+page';
 	import Icon from './icon.svelte';
 
@@ -11,6 +12,16 @@
 	]);
 
 	let yearMap = new Set();
+
+	function handleClick({ target }: { target: any }) {
+		const el = document.querySelector(target.getAttribute('id'));
+		if (!el) return;
+		$selected = target.getAttribute('id').slice(1);
+		el.scrollIntoView({
+			behavior: 'smooth',
+			block: 'center'
+		});
+	}
 </script>
 
 <ul class="timeline">
@@ -23,12 +34,24 @@
 			{#if !yearMap.has(project.created_at?.getFullYear()) && yearMap.add(project.created_at?.getFullYear())}
 				<div class="timeline-start">{project.created_at?.getFullYear()}</div>
 			{/if}
-			<div class="timeline-middle">
-				<Icon icon="star" />
+			<div
+				class="swap swap-rotate {$selected === project.title.replaceAll(' ', '-')
+					? 'swap-active'
+					: ''} timeline-middle"
+			>
+				<Icon icon="star" class="swap-off" />
+				<Icon icon="star-filled" class="swap-on" />
 			</div>
-			<div class="timeline-end timeline-box">
+			<button
+				class="timeline-end timeline-box hover:cursor-pointer hover:bg-accent {$selected ===
+				project.title.replaceAll(' ', '-')
+					? 'bg-base-300'
+					: ''} transition"
+				on:click={handleClick}
+				id={'#' + project.title.replaceAll(' ', '-')}
+			>
 				{titleMap.get(project.title) || project.title.split(' ')[0]}
-			</div>
+			</button>
 			{#if i != projects.length - 1}
 				<hr />
 			{/if}
