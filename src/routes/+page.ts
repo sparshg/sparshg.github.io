@@ -38,6 +38,8 @@ const socials: Social[] = [
     },
 ];
 
+const about = "I like tinkering with code and making random stuff... diving into low-level graphics, playing around with Rust, making animations with code, or messing with some Android apps.\n\n It's all about learning by doing.";
+
 const projects: ProjectData[] = [
     {
         title: 'Asteroids Genetic',
@@ -192,5 +194,5 @@ export const load = (async ({ fetch, setHeaders }) => {
         }
     }
 
-    return { projects, socials };
+    return { projects, socials, about };
 }) satisfies PageLoad;

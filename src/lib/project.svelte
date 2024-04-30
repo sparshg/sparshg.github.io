@@ -10,7 +10,9 @@
 	class="card bg-base-300 rounded-2xl hover:scale-105 transition duration-300 {$$props.class}"
 	on:pointerover={() => {
 		$selected = project.title.replaceAll(' ', '-');
-		$text = 'cd ~/projects/' + $selected.toLowerCase();
+		$text = 'cd ~/Projects/' + $selected.toLowerCase();
+		const el = document.getElementById('#' + $selected);
+		if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
 	}}
 	role="presentation"
 >
