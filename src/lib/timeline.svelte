@@ -26,7 +26,7 @@
 	}
 </script>
 
-<ul class="timeline">
+<ul class="timeline timeline-vertical {$$props.class}">
 	{#each projects as project, i}
 		<li>
 			{#if i != 0}

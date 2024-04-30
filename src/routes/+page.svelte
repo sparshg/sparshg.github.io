@@ -9,7 +9,7 @@
 	export let data: PageData;
 </script>
 
-<div class="lg:flex mx-12 my-16">
+<div class="lg:flex mx-8 my-16">
 	<div class="lg:w-[55%] max-lg:w-0" />
 	<div class="lg:fixed lg:w-[45%] lg:h-[calc(100vh-7rem)] flex flex-col justify-between">
 		<div>
@@ -17,8 +17,9 @@
 			<Typewriter input={$text} />
 		</div>
 		<Timeline
+			class="max-lg:hidden self-end"
 			projects={data.projects.toSorted((a, b) =>
-				a.created_at && b.created_at ? a.created_at.getTime() - b.created_at.getTime() : 0
+				a.created_at && b.created_at ? b.created_at.getTime() - a.created_at.getTime() : 0
 			)}
 		/>
 		<div class="flex justify-between items-center">
@@ -34,7 +35,7 @@
 						target="_blank"
 						rel="noopener noreferrer"
 						class="link badge badge-accent rounded-full py-4 px-3 transition hover:border-b-base-content"
-						on:mouseenter={() => ($text = 'cd ~/contacts/' + social.icon)}
+						on:pointerover={() => ($text = 'cd ~/contacts/' + social.icon)}
 					>
 						<Icon icon={social.icon} class="size-4 mr-2" />
 						<Icon icon="link" />
@@ -49,10 +50,12 @@
 			</label>
 		</div>
 	</div>
-	<div class="lg:w-[45%] max-lg:grid max-lg:gap-6 max-lg:justify-between md:grid-cols-2">
-		{#each data.projects as project, i}
+	<div
+		class="lg:w-[45%] grid gap-6 max-lg:justify-between lg:grid-cols-1 md:grid-cols-2 grid-cols-1"
+	>
+		{#each data.projects as project}
 			<section id={project.title.replaceAll(' ', '-')}>
-				<Project class="lg:mb-6 animate-fade" {project} />
+				<Project class="h-full" {project} />
 			</section>
 		{/each}
 	</div>

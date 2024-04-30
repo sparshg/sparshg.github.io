@@ -8,7 +8,7 @@
 
 <div
 	class="card bg-base-300 rounded-2xl hover:scale-105 transition duration-300 {$$props.class}"
-	on:mouseenter={() => {
+	on:pointerover={() => {
 		$selected = project.title.replaceAll(' ', '-');
 		$text = 'cd ~/projects/' + $selected.toLowerCase();
 	}}
@@ -21,7 +21,7 @@
 	</a>
 	<div class="card-body">
 		<h2 class="card-title flex justify-between mb-1 flex-wrap">
-			<div class="flex items-center">
+			<div class="flex flex-wrap items-center">
 				<a class="link link-hover" href={project.repo} target="_blank" rel="noopener noreferrer">
 					{project.title}
 				</a>
