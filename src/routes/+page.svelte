@@ -14,10 +14,10 @@
 	<div class="lg:w-[55%] max-lg:w-0" />
 	<div class="lg:fixed lg:w-[45%] lg:h-[calc(100vh-7rem)] flex flex-col justify-between">
 		<div>
-			<h1 class="font-bold text-3xl md:text-6xl mb-7">Sparsh Goenka</h1>
+			<h1 class="font-bold text-3xl md:text-6xl 2xl:text-7xl mb-7">Sparsh Goenka</h1>
 			<Typewriter input={$text} />
 		</div>
-		<div class="text-xl font-mono">
+		<div class="text-xl 2xl:text-3xl font-mono">
 			<button
 				class="w-full cursor-pointer {page == 0
 					? 'bg-base-content text-base-100'
@@ -36,7 +36,7 @@
 			</button>
 		</div>
 
-		<div class="flex h-full my-4 justify-between font-mono items-center">
+		<div class="text-md 2xl:text-2xl flex h-full my-4 justify-between font-mono items-center">
 			<p class="lg:basis-7/12">
 				{#each data.about.split('\n') as about}
 					{about}<br />
@@ -46,13 +46,13 @@
 				<div
 					class="h-[calc(100vh-30rem)] no-scrollbar overflow-y-scroll max-lg:hidden basis-7/12 fade-mask"
 				>
-					<div class="h-14"></div>
+					<div class="h-[calc(25vh-7.5rem)]"></div>
 					<Timeline
 						projects={data.projects.toSorted((a, b) =>
 							a.created_at && b.created_at ? b.created_at.getTime() - a.created_at.getTime() : 0
 						)}
 					/>
-					<div class="h-14"></div>
+					<div class="h-[calc(25vh-7.5rem)]"></div>
 				</div>
 			</div>
 		</div>

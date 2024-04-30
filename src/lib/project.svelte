@@ -7,7 +7,9 @@
 </script>
 
 <div
-	class="card bg-base-300 rounded-2xl hover:scale-105 transition duration-300 {$$props.class}"
+	class="card bg-base-300 rounded-2xl {$selected === project.title.replaceAll(' ', '-')
+		? 'scale-105'
+		: ''} transition duration-250 {$$props.class}"
 	on:pointerover={() => {
 		$selected = project.title.replaceAll(' ', '-');
 		$text = 'cd ~/Projects/' + $selected.toLowerCase();
