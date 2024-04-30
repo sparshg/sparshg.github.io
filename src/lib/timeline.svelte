@@ -8,7 +8,7 @@
 
 	const titleMap = new Map([
 		['BITS Wi-Fi Login', 'Wi-Fi'],
-		['The Block Game', 'Block Game'],
+		['The Block Game', 'BlockGame'],
 		['Tic-Tac-Toe', 'TicTacToe']
 	]);
 
