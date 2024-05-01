@@ -69,7 +69,7 @@
 	const cursor = '<div class="bg-base-content inline-block">.</div>';
 </script>
 
-<div class="flex text-xl md:text-3xl 2xl:text-4xl font-mono min-h-20">
+<div class="{$$props.class} flex text-xl md:text-3xl 2xl:text-4xl font-mono min-h-20">
 	<div class="mr-5">></div>
 	<div>
 		{#if text[text.length - 1] === ' '}

@@ -24,9 +24,14 @@
 		</figure>
 	</a>
 	<div class="card-body">
-		<h2 class="card-title flex justify-between mb-1 flex-wrap">
+		<h2 class="card-title flex justify-between mb-1">
 			<div class="flex flex-wrap items-center">
-				<a class="link link-hover" href={project.repo} target="_blank" rel="noopener noreferrer">
+				<a
+					class="link link-hover mr-2"
+					href={project.repo}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					{project.title}
 				</a>
 				{#if project.links.find((link) => link.platform === 'Web')}
@@ -34,7 +39,7 @@
 						href={project.links.find((link) => link.platform === 'Web')?.link}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="link badge badge-neutral p-3 ml-2"
+						class="link badge badge-neutral p-3 mr-2"
 					>
 						Web
 						<Icon icon="link" />
@@ -45,7 +50,7 @@
 						href={project.links.find((link) => link.platform === 'Youtube')?.link}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="link badge badge-neutral p-3 ml-2"
+						class="link badge badge-neutral p-3 mr-2"
 					>
 						<Icon icon="youtube" />
 						<Icon icon="link" />
@@ -56,7 +61,7 @@
 						href={project.links.find((link) => link.platform === 'PlayStore')?.link}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="link badge badge-neutral p-3 ml-2"
+						class="link badge badge-neutral p-3 mr-2"
 					>
 						<Icon icon="playstore" />
 						<Icon icon="link" />
@@ -67,7 +72,7 @@
 						href={project.links.find((link) => link.platform === 'Itch')?.link}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="link badge badge-neutral p-3 ml-2"
+						class="link badge badge-neutral p-3 mr-2"
 					>
 						<Icon icon="itch" />
 						<Icon icon="link" />
