@@ -16,6 +16,7 @@
 			'cd ~/' +
 			('stars' in project ? 'Projects/' : 'Experience/') +
 			project.title.toLowerCase().replaceAll(' ', '-').replaceAll('---', '-');
+		if (window.matchMedia('(max-width: 1024px)').matches) return;
 		const el = document.getElementById('#id' + $selected);
 		if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
 	}}
