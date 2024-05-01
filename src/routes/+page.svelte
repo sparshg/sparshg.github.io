@@ -17,10 +17,7 @@
 	>
 		<div class="max-lg:contents">
 			<h1 class="font-bold text-3xl md:text-6xl 2xl:text-7xl">Sparsh Goenka</h1>
-			<Typewriter
-				class="rounded-b-3xl sticky top-0 z-50 py-3 -mx-2.5 px-2.5 max-lg:bg-base-100"
-				input={$text}
-			/>
+			<Typewriter class="sticky top-0 z-50 py-3 my-1 -mx-5 px-5 max-lg:bg-base-100" input={$text} />
 		</div>
 		<div class="text-xl 2xl:text-3xl font-mono">
 			<button
@@ -47,16 +44,19 @@
 			</button>
 		</div>
 
-		<div class="text-md 2xl:text-2xl flex h-full my-4 justify-between font-mono items-center">
+		<div
+			class="flex lg:flex-row flex-col text-md 2xl:text-2xl h-full my-4 justify-between font-mono items-center"
+		>
 			<p class="lg:basis-7/12">
 				{#each data.about.split('\n') as about}
 					{about}<br />
 				{/each}
 			</p>
-			<div class="basis-5/12">
-				<div class="h-[calc(100vh-30rem)] no-scrollbar overflow-y-scroll max-lg:hidden fade-mask">
+			<div class="basis-5/12 lg:fade-mask-y max-lg:fade-mask-x w-full flex flex-col items-center">
+				<div class="lg:h-[calc(100vh-30rem)] no-scrollbar overflow-y-scroll">
 					<div class="h-[calc(25vh-9rem)]"></div>
 					<Timeline
+						class="flex-grow"
 						projects={$page == 0
 							? data.projects.toSorted((a, b) =>
 									a.created_at && b.created_at ? b.created_at.getTime() - a.created_at.getTime() : 0

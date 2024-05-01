@@ -28,8 +28,12 @@
         scrollbar-width: none;
     }
 
-    .fade-mask {
+    .fade-mask-y {
         mask-image: linear-gradient(0.5turn, transparent, black 10%, black 90%, transparent);
+    }
+
+    .fade-mask-x {
+        mask-image: linear-gradient(0.25turn, transparent, black 5%, black 95%, transparent);
     }
 
 }
