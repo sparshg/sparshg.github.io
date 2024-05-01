@@ -30,6 +30,7 @@ export type Social = {
 };
 
 export type Platform = 'Web' | 'PlayStore' | 'Youtube' | 'Itch' | string;
+
 export type IconType = 'link' | 'star' | 'star-filled' | 'youtube' | 'playstore' | 'itch' | 'sun' | 'moon' | 'github' | 'linkedin' | 'email';
 
 const socials: Social[] = [
