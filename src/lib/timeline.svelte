@@ -11,8 +11,23 @@
 		['Tic-Tac-Toe', 'TicTacToe']
 	]);
 
-	let yearMap = new Set();
-	$: $page, yearMap.clear();
+	let yearMap: Map<number, number>;
+
+	$: $page, (yearMap = getYearMap());
+
+	function getYearMap() {
+		let yearMap = new Map();
+		for (const project of projects.slice().reverse()) {
+			if ('from' in project) {
+				if (!yearMap.has(project.from?.getFullYear())) {
+					yearMap.set(project.from?.getFullYear(), project.id);
+				}
+			} else if (!yearMap.has(project.created_at?.getFullYear())) {
+				yearMap.set(project.created_at?.getFullYear(), project.id);
+			}
+		}
+		return yearMap;
+	}
 
 	function handleClick({ target }: { target: any }) {
 		const el = document.querySelector(target.getAttribute('id'));
@@ -51,10 +66,10 @@
 			{/if}
 
 			{#if 'from' in project}
-				{#if !yearMap.has(project.from?.getFullYear()) && yearMap.add(project.from?.getFullYear())}
+				{#if yearMap.get(project.from.getFullYear()) == project.id}
 					<div class="timeline-start">{project.from?.getFullYear()}</div>
 				{/if}
-			{:else if !yearMap.has(project.created_at?.getFullYear()) && yearMap.add(project.created_at?.getFullYear())}
+			{:else if yearMap.get(project.created_at?.getFullYear() || -1) == project.id}
 				<div class="timeline-start">{project.created_at?.getFullYear()}</div>
 			{/if}
 			<div class="swap swap-rotate {$selected == project.id ? 'swap-active' : ''} timeline-middle">

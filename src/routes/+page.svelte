@@ -34,13 +34,24 @@
 			<button
 				class="w-full cursor-pointer {$page == 1
 					? 'bg-base-content text-base-100'
-					: 'hover:outline bg-base-300'} p-1"
+					: 'hover:outline bg-base-300'} p-1 mb-2"
 				on:click={() => {
 					$page = 1;
 					$text = 'cd ~/Experience/';
 				}}
 			>
 				Experience
+			</button>
+			<button
+				class="w-full cursor-pointer {$page == 2
+					? 'bg-base-content text-base-100'
+					: 'hover:outline bg-base-300'} p-1"
+				on:click={() => {
+					$page = 2;
+					$text = 'cd ~/Blogs/';
+				}}
+			>
+				Blogs
 			</button>
 		</div>
 
@@ -52,19 +63,18 @@
 					{about}<br />
 				{/each}
 			</p>
-			<div class="basis-5/12 lg:fade-mask-y max-lg:fade-mask-x w-full flex flex-col items-center">
-				<div class="lg:h-[calc(100vh-30rem)] no-scrollbar overflow-y-scroll">
-					<div class="h-[calc(25vh-9rem)]"></div>
-					<Timeline
-						class="flex-grow"
-						projects={$page == 0
-							? data.projects.toSorted((a, b) =>
-									a.created_at && b.created_at ? b.created_at.getTime() - a.created_at.getTime() : 0
-								)
-							: data.experience.toSorted((a, b) => b.from.getTime() - a.from.getTime())}
-					/>
-					<div class="h-[calc(25vh-9rem)]"></div>
-				</div>
+			<div
+				class="basis-5/12 fade-mask-y max-lg:fade-mask-x content-center no-scrollbar overflow-auto lg:max-h-[calc(100vh-30rem)]"
+			>
+				<div class="lg:h-[calc(25vh-9rem)]" />
+				<Timeline
+					projects={$page == 0
+						? data.projects.toSorted((a, b) =>
+								a.created_at && b.created_at ? b.created_at.getTime() - a.created_at.getTime() : 0
+							)
+						: data.experience.toSorted((a, b) => b.from.getTime() - a.from.getTime())}
+				/>
+				<div class="lg:h-[calc(25vh-9rem)]" />
 			</div>
 		</div>
 
@@ -109,7 +119,7 @@
 		{/each}
 		{#each data.experience as experience}
 			{#if $page == 1}
-				<section id="id{experience.id}" in:fly={{ x: -100, duration: 500 }}>
+				<section id="id{experience.id}" transition:fly={{ x: -100, duration: 500 }}>
 					<Project class="h-full" project={experience} />
 				</section>
 			{/if}
