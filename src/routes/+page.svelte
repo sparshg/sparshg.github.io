@@ -5,17 +5,20 @@
 	import type { PageData } from './$types';
 	import Icon from '$lib/icon.svelte';
 	import { text } from '$lib/stores';
+	import { fly } from 'svelte/transition';
 
 	export let data: PageData;
 	let page = 0;
 </script>
 
-<div class="lg:flex mx-8 mt-16 mb-12">
+<div class="lg:flex mx-8 pt-16 pb-12">
 	<div class="lg:w-[55%] max-lg:w-0" />
-	<div class="lg:fixed lg:w-[45%] lg:h-[calc(100vh-7rem)] flex flex-col justify-between">
-		<div>
-			<h1 class="font-bold text-3xl md:text-6xl 2xl:text-7xl mb-7">Sparsh Goenka</h1>
-			<Typewriter input={$text} />
+	<div
+		class="max-lg:contents lg:fixed lg:w-[45%] lg:h-[calc(100vh-7rem)] flex flex-col justify-between"
+	>
+		<div class="max-lg:contents">
+			<h1 class="font-bold text-3xl md:text-6xl 2xl:text-7xl">Sparsh Goenka</h1>
+			<Typewriter class="sticky top-0 z-50 py-4 -mx-5 px-5 bg-base-100" input={$text} />
 		</div>
 		<div class="text-xl 2xl:text-3xl font-mono">
 			<button
@@ -80,19 +83,21 @@
 			<div class="flex-grow"></div>
 
 			<label class="swap swap-rotate bg-base-300 rounded-full min-w-16 min-h-16">
-				<input type="checkbox" class="theme-controller" value="cupcake" />
+				<input type="checkbox" class="theme-controller" value="nord" />
 				<Icon icon="sun" class="swap-on size-8" />
 				<Icon icon="moon" class="swap-off size-8" />
 			</label>
 		</div>
 	</div>
 	<div
-		class="lg:w-[45%] grid gap-6 max-lg:justify-between max-lg:mt-12 lg:grid-cols-1 md:grid-cols-2 grid-cols-1"
+		class="lg:w-[45%] grid gap-x-6 gap-y-8 max-lg:justify-between max-lg:mt-12 lg:grid-cols-1 md:grid-cols-2 grid-cols-1"
 	>
 		{#each data.projects as project}
-			<section id={project.title.replaceAll(' ', '-')}>
-				<Project class="h-full" {project} />
-			</section>
+			{#if page === 0}
+				<section id={project.title.replaceAll(' ', '-')} transition:fly={{ x: 100, duration: 500 }}>
+					<Project class="h-full" {project} />
+				</section>
+			{/if}
 		{/each}
 	</div>
 </div>
