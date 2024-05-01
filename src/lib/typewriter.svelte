@@ -23,11 +23,11 @@
 		}
 		state = 'deleting';
 		let i = getLastCommon();
-		if (i === text.length) {
+		if (i == text.length) {
 			return type();
 		}
 		interval = setInterval(() => {
-			if (i === text.length) {
+			if (i == text.length) {
 				clearInterval(interval);
 				type();
 			} else {
@@ -44,10 +44,10 @@
 		state = 'typing';
 		let i = text.length;
 		interval = setInterval(() => {
-			if (i === input.length) {
+			if (i == input.length) {
 				clearInterval(interval);
 				state = 'idle';
-			} else if (i > 0 && text[i - 1] === ' ') {
+			} else if (i > 0 && text[i - 1] == ' ') {
 				clearInterval(interval);
 				interval = setTimeout(() => {
 					text += input[i];
@@ -69,7 +69,9 @@
 	const cursor = '<div class="bg-base-content inline-block">.</div>';
 </script>
 
-<div class="{$$props.class} flex text-xl md:text-3xl 2xl:text-4xl font-mono min-h-20">
+<div
+	class="{$$props.class} flex text-xl md:text-3xl 2xl:text-4xl font-mono min-h-24 max-h-24 lg:max-h-28 lg:min-h-28"
+>
 	<div class="mr-5">></div>
 	<div>
 		{#if text[text.length - 1] === ' '}

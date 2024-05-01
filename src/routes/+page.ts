@@ -1,6 +1,7 @@
 import type { PageLoad } from './$types';
 
 export type ProjectData = {
+    id: number,
     title: string;
     description: string;
     image: string;
@@ -11,12 +12,24 @@ export type ProjectData = {
     created_at: Date | undefined;
 };
 
+export type ExperienceData = {
+    id: number,
+    title: string;
+    description: string;
+    image: string;
+    links: { platform: Platform, link: string }[];
+    tags: string[];
+    repo: string;
+    from: Date;
+    to: Date;
+};
+
 export type Social = {
     icon: IconType;
     link: string;
 };
 
-export type Platform = 'Web' | 'PlayStore' | 'AppStore' | 'Win' | 'Mac' | 'Linux' | 'Youtube' | 'Itch' | 'Android';
+export type Platform = 'Web' | 'PlayStore' | 'Youtube' | 'Itch' | string;
 export type IconType = 'link' | 'star' | 'star-filled' | 'youtube' | 'playstore' | 'itch' | 'sun' | 'moon' | 'github' | 'linkedin' | 'email';
 
 const socials: Social[] = [
@@ -38,13 +51,12 @@ const socials: Social[] = [
     },
 ];
 
-const about = "I like tinkering with code and making random stuff... diving into low-level graphics, playing around with Rust, making animations with code, or messing with some Android apps.\n\n It's all about learning by doing.";
+const about = "I like tinkering with code and making random stuff... diving into low-level graphics, playing around with Rust, making animations with code, or messing with some Android apps...\n\n It's all about learning by doing.";
 
 const projects: ProjectData[] = [
     {
         title: 'Asteroids Genetic',
-        description:
-            'Interactive AI training simulation that uses <u>neural networks</u> and <u>genetic algorithm</u> to learn playing the arcade asteroids game. Everything, including the game and neural networks are implemented from scratch. Supports saving/loading the model, and also human mode to play the game.',
+        description: 'Interactive AI training simulation that uses <u>neural networks</u> and <u>genetic algorithm</u> to learn playing the arcade asteroids game. Everything, including the game and neural networks are implemented from scratch. Supports saving/loading the model, and also human mode to play the game.',
         image: '<img src=https://raw.githubusercontent.com/sparshg/asteroids-genetic/main/assets/demo.png />',
         repo: 'https://github.com/sparshg/asteroids-genetic',
         tags: ['Rust', 'WASM'],
@@ -72,6 +84,7 @@ const projects: ProjectData[] = [
         ],
         stars: undefined,
         created_at: undefined,
+        id: 0
     },
     {
         title: "PID Controller",
@@ -99,6 +112,7 @@ const projects: ProjectData[] = [
         ],
         stars: undefined,
         created_at: undefined,
+        id: 1
     },
     {
         title: "BITS Wi-Fi Login",
@@ -118,6 +132,7 @@ const projects: ProjectData[] = [
         ],
         stars: undefined,
         created_at: undefined,
+        id: 2
     },
     {
         title: "Fuzzy Controller",
@@ -133,6 +148,7 @@ const projects: ProjectData[] = [
         ],
         stars: undefined,
         created_at: undefined,
+        id: 3
     },
     {
         title: "The Block Game",
@@ -156,6 +172,7 @@ const projects: ProjectData[] = [
         ],
         stars: undefined,
         created_at: undefined,
+        id: 4
     },
     {
         title: "Tic-Tac-Toe",
@@ -175,6 +192,49 @@ const projects: ProjectData[] = [
         ],
         stars: undefined,
         created_at: undefined,
+        id: 5
+    },
+];
+
+const experience: ExperienceData[] = [
+    {
+        title: 'Wells Fargo - Intern',
+        description: "",
+        image: '<img src=https://www.wellsfargo.com/assets/images/logos/wellsfargo/logo_974x1050.png class="h-44 bg-[#d61f28] w-full object-contain" />',
+        repo: '',
+        tags: [],
+        links: [],
+        from: new Date(2024, 5, 3),
+        to: new Date(2024, 7, 26),
+        id: 0
+    },
+    {
+        title: 'Sugar Labs - Intern (GSoC 2023)',
+        description: "Worked on porting of Sugar applications to <u>Flatpak</u> and updating the existing packages, including two major applications , Pippy code editor and Physics simulator.",
+        image: '<div class="flex flex-col justify-center h-56 bg-white w-full"><img src=https://www.sugarlabs.org/assets/logo.png class="h-24 object-contain" /><img src=https://developers.google.com/open-source/gsoc/resources/downloads/GSoC-Horizontal.png class="h-20 object-contain" /></div>',
+        repo: 'https://summerofcode.withgoogle.com/archive/2023/projects/GUSDsFPO',
+        tags: ["Python", "Flatpaks", "GTK"],
+        links: [{
+            platform: "Certificate",
+            link: '/completion_certificate_2023_contributor.pdf'
+        }],
+        from: new Date(2023, 4, 29),
+        to: new Date(2023, 7, 28),
+        id: 1
+    },
+    {
+        title: 'Sugar Labs - Intern (GSoC 2022)',
+        description: "Maintained and improved applications for Sugar, written in <u>GTK+</u> and <u>Python</u>. Sugar labs ships these applications in various ways like with their OS, Desktop Environment, Flatpak Packages, Web versions, etc",
+        image: '<div class="flex flex-col justify-center h-56 bg-white w-full"><img src=https://www.sugarlabs.org/assets/logo.png class="h-24 object-contain" /><img src=https://developers.google.com/open-source/gsoc/resources/downloads/GSoC-Horizontal.png class="h-20 object-contain" /></div>',
+        repo: 'https://summerofcode.withgoogle.com/archive/2022/projects/sTY158cC',
+        tags: ["Python", "GTK", "PyGame"],
+        links: [{
+            platform: "Certificate",
+            link: '/completion_certificate_2022_contributor.pdf'
+        }],
+        from: new Date(2022, 5, 13),
+        to: new Date(2022, 8, 12),
+        id: 2
     },
 ];
 
@@ -194,5 +254,5 @@ export const load = (async ({ fetch, setHeaders }) => {
         }
     }
 
-    return { projects, socials, about };
+    return { projects, experience, socials, about };
 }) satisfies PageLoad;
