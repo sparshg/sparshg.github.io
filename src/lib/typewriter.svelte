@@ -1,7 +1,8 @@
 <script lang="ts">
 	export let input: string;
-	let charDelay = 50;
-	let wordDelay = 100;
+	let charDelay = 45;
+	let deleteDelay = 30;
+	let wordDelay = 70;
 
 	let text = '';
 	let state: 'typing' | 'deleting' | 'idle' = 'idle';
@@ -33,7 +34,7 @@
 			} else {
 				text = text.slice(0, -1);
 			}
-		}, charDelay);
+		}, deleteDelay);
 	}
 
 	function type() {
@@ -47,7 +48,7 @@
 			if (i == input.length) {
 				clearInterval(interval);
 				state = 'idle';
-			} else if (i > 0 && text[i - 1] == ' ') {
+			} else if (i > 0 && text[i - 1].match(/[\s/-]/)) {
 				clearInterval(interval);
 				interval = setTimeout(() => {
 					text += input[i];
