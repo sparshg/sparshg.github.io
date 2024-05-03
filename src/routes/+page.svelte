@@ -64,7 +64,7 @@
 				{/each}
 			</p>
 			<div
-				class="basis-5/12 fade-mask-y max-lg:fade-mask-x content-center no-scrollbar overflow-auto lg:max-h-[calc(100vh-30rem)]"
+				class="basis-5/12 fade-mask-y max-lg:fade-mask-x content-center no-scrollbar overflow-auto lg:max-h-[calc(100vh-32rem)]"
 			>
 				<div class="lg:h-[calc(25vh-9rem)]" />
 				<Timeline
