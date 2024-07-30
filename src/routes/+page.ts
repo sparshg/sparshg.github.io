@@ -199,10 +199,10 @@ const projects: ProjectData[] = [
 const experience: ExperienceData[] = [
     {
         title: 'Wells Fargo - Intern',
-        description: "",
+        description: "Built two VSCode extensions for developers to reduce manual overhead. Namely, 'Proxy Orchestrator' to automatic route other extension's traffic and 'Salesforce Diff Viewer' to integrate Git diff viewer with Salesforce Org.",
         image: '<img src=https://www.wellsfargo.com/assets/images/logos/wellsfargo/logo_974x1050.png class="h-44 bg-[#d61f28] w-full object-contain" />',
         repo: '',
-        tags: [],
+        tags: ["Typescript"],
         links: [],
         from: new Date(2024, 5, 3),
         to: new Date(2024, 7, 26),
@@ -210,7 +210,7 @@ const experience: ExperienceData[] = [
     },
     {
         title: 'Sugar Labs - Intern (GSoC 2023)',
-        description: "Worked on porting of Sugar applications to <u>Flatpak</u> and updating the existing packages, including two major applications , Pippy code editor and Physics simulator.",
+        description: "Worked on porting of Sugar applications to <u>Flatpak</u> and updating the existing packages, for easy distribution across Linux distros, including two major applications, Pippy code editor and Physics simulator.",
         image: '<div class="flex flex-col justify-center h-56 bg-white w-full"><img src=https://www.sugarlabs.org/assets/logo.png class="h-24 object-contain" /><img src=https://developers.google.com/open-source/gsoc/resources/downloads/GSoC-Horizontal.png class="h-20 object-contain" /></div>',
         repo: 'https://summerofcode.withgoogle.com/archive/2023/projects/GUSDsFPO',
         tags: ["Python", "Flatpaks", "GTK"],
