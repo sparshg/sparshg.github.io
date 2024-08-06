@@ -199,7 +199,7 @@ const projects: ProjectData[] = [
 const experience: ExperienceData[] = [
     {
         title: 'Wells Fargo - Intern',
-        description: "Built two VSCode extensions for developers to reduce manual overhead. Namely, 'Proxy Orchestrator' to automatic route other extension's traffic and 'Salesforce Diff Viewer' to integrate Git diff viewer with Salesforce Org.",
+        description: "Built two VSCode extensions for developers to reduce manual overhead. Namely, 'Proxy Orchestrator' to automatically route other extensions' traffic and 'Salesforce Diff Viewer' to integrate Git diff viewer with a Salesforce Project.",
         image: '<img src=https://www.wellsfargo.com/assets/images/logos/wellsfargo/logo_974x1050.png class="h-44 bg-[#d61f28] w-full object-contain" />',
         repo: '',
         tags: ["Typescript"],
