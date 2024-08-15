@@ -1,9 +1,11 @@
 <script lang="ts">
-	import { page, text, selected } from '$lib/stores';
-	import type { ExperienceData, ProjectData } from '$lib/types';
-	import Icon from './icon.svelte';
+	import { text, selected } from '$lib/stores';
+	import { page } from '$app/stores';
+	import type { BlogData, ExperienceData, ProjectData } from '$lib/types';
+	import Icon from '$lib/components/icon.svelte';
+	import { base } from '$app/paths';
 
-	export let projects: ProjectData[] | ExperienceData[];
+	export let cards: ProjectData[] | ExperienceData[] | BlogData[];
 
 	const titleMap = new Map([
 		['BITS Wi-Fi Login', 'Wi-Fi'],
@@ -13,11 +15,11 @@
 
 	let yearMap: Map<number, number>;
 
-	$: $page, (yearMap = getYearMap());
+	$: $page.url.pathname, (yearMap = getYearMap());
 
 	function getYearMap() {
 		let yearMap = new Map();
-		for (const project of projects.slice().reverse()) {
+		for (const project of cards.slice().reverse()) {
 			if ('from' in project) {
 				if (!yearMap.has(project.from?.getFullYear())) {
 					yearMap.set(project.from?.getFullYear(), project.id);
@@ -33,23 +35,17 @@
 		const el = document.querySelector(target.getAttribute('id'));
 		if (!el) return;
 		$selected = target.getAttribute('id').slice(3);
-		if ($page == 0) {
-			$text =
-				'cd ~/Projects/' +
-				projects
-					.find((project) => project.id == $selected)
-					?.title.toLowerCase()
-					.replaceAll(' ', '-')
-					.replaceAll('---', '-');
-		} else {
-			$text =
-				'cd ~/Experience/' +
-				projects
-					.find((project) => project.id == $selected)
-					?.title.toLowerCase()
-					.replaceAll(' ', '-')
-					.replaceAll('---', '-');
-		}
+		$text = `cd ~/${
+			$page.url.pathname == `${base}/experience`
+				? 'Experience'
+				: $page.url.pathname == `${base}/blogs`
+					? 'Blogs'
+					: 'Projects'
+		}/${cards
+			.find((card) => card.id == $selected)
+			?.title.toLowerCase()
+			.replaceAll(' ', '-')
+			.replaceAll('---', '-')}`;
 
 		el.scrollIntoView({
 			behavior: 'smooth',
@@ -59,7 +55,7 @@
 </script>
 
 <ul class="timeline timeline-horizontal lg:timeline-vertical {$$props.class}">
-	{#each projects as project, i}
+	{#each cards as project, i}
 		<li>
 			{#if i != 0}
 				<hr />
@@ -90,7 +86,7 @@
 					{titleMap.get(project.title) || project.title.split(' ')[0]}
 				{/if}
 			</button>
-			{#if i != projects.length - 1}
+			{#if i != cards.length - 1}
 				<hr />
 			{/if}
 		</li>

@@ -1,6 +1,5 @@
 <script lang="ts">
-	import Project from '$lib/components/project.svelte';
-	import { fly } from 'svelte/transition';
+	import Card from '$lib/components/card.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -8,6 +7,6 @@
 
 {#each data.experience as experience}
 	<section id="id{experience.id}">
-		<Project class="h-full" project={experience} />
+		<Card class="h-full" card={experience} cardType="Experience" />
 	</section>
 {/each}

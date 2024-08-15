@@ -7,7 +7,7 @@ const experience: ExperienceData[] = [
         title: 'Wells Fargo - Intern',
         description: "Built two VSCode extensions for developers to reduce manual overhead. <u>Proxy Orchestrator</u> to automatically route other extensions' traffic and <u>Salesforce Diff Viewer</u> to integrate Git diff viewer with Salesforce Org.",
         image: '<img src=https://www.wellsfargo.com/assets/images/logos/wellsfargo/logo_974x1050.png class="h-44 bg-[#d61f28] w-full object-contain" />',
-        repo: '',
+        repo: undefined,
         tags: ["Typescript"],
         links: [],
         from: new Date(2024, 5, 3),

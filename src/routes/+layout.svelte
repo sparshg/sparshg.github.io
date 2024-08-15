@@ -1,7 +1,6 @@
 <script lang="ts">
 	import '../app.css';
 	import type { LayoutData } from './$types';
-	import Project from '$lib/components/project.svelte';
 	import Typewriter from '$lib/components/typewriter.svelte';
 	import Timeline from '$lib/components/timeline.svelte';
 	import Icon from '$lib/components/icon.svelte';
@@ -67,7 +66,7 @@
 				class="basis-5/12 fade-mask-y max-lg:fade-mask-x content-center no-scrollbar overflow-auto lg:max-h-[calc(100vh-32rem)]"
 			>
 				<div class="lg:h-[calc(25vh-9rem)]" />
-				<Timeline projects={$page.data.timelineData} />
+				<Timeline cards={$page.data.timelineData} />
 				<div class="lg:h-[calc(25vh-9rem)]" />
 			</div>
 		</div>
@@ -101,10 +100,15 @@
 			</label>
 		</div>
 	</div>
-	<div
-		class="lg:w-[45%] grid gap-x-6 gap-y-8 max-lg:justify-between max-lg:mt-12 lg:grid-cols-1 md:grid-cols-2 grid-cols-1"
-		transition:fly={{ x: -100, duration: 500 }}
-	>
-		<slot />
+	<div class="lg:w-[45%]">
+		{#key data.url}
+			<div
+				class="grid gap-x-6 gap-y-8 max-lg:justify-between max-lg:mt-12 lg:grid-cols-1 md:grid-cols-2 grid-cols-1"
+				in:fly={{ x: -100, duration: 500, delay: 500 }}
+				out:fly={{ x: 100, duration: 500 }}
+			>
+				<slot />
+			</div>
+		{/key}
 	</div>
 </div>

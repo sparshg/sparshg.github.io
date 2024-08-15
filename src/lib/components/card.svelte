@@ -1,46 +1,39 @@
 <script lang="ts">
-	import Icon from './icon.svelte';
-	import type { ExperienceData, ProjectData } from '$lib/types';
-	import { selected } from '../stores';
-	import { text } from '../stores';
-	export let project: ProjectData | ExperienceData;
+	import Icon from '$lib/components/icon.svelte';
+	import type { BlogData, ExperienceData, ProjectData } from '$lib/types';
+	import { selected } from '$lib/stores';
+	import { text } from '$lib/stores';
+	export let card: ProjectData | ExperienceData | BlogData;
+	export let cardType: 'Projects' | 'Experience' | 'Blogs';
 </script>
 
 <div
-	class="card bg-base-300 rounded-2xl lg:hover:scale-105 {$selected === project.id
+	class="card bg-base-300 rounded-2xl lg:hover:scale-105 {$selected === card.id
 		? 'max-lg:scale-105'
 		: ''} transition duration-300 {$$props.class}"
 	on:pointerover={() => {
-		$selected = project.id;
-		$text =
-			'cd ~/' +
-			('stars' in project ? 'Projects/' : 'Experience/') +
-			project.title.toLowerCase().replaceAll(' ', '-').replaceAll('---', '-');
+		$selected = card.id;
+		$text = `cd ~/${cardType}/${card.title.toLowerCase().replaceAll(' ', '-').replaceAll('---', '-')}`;
 		if (window.matchMedia('(max-width: 1024px)').matches) return;
 		const el = document.getElementById('#id' + $selected);
 		if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
 	}}
 	role="presentation"
 >
-	<a href={project.repo} target="_blank" rel="noopener noreferrer">
+	<a href={card.repo} target="_blank" rel="noopener noreferrer">
 		<figure class="rounded-2xl">
-			{@html project.image}
+			{@html card.image}
 		</figure>
 	</a>
 	<div class="card-body">
 		<h2 class="card-title flex justify-between mb-1">
 			<div class="flex flex-wrap items-center">
-				<a
-					class="link link-hover mr-2"
-					href={project.repo}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					{project.title}
+				<a class="link link-hover mr-2" href={card.repo} target="_blank" rel="noopener noreferrer">
+					{card.title}
 				</a>
-				{#if project.links.find((link) => link.platform === 'Web')}
+				{#if card.links.find((link) => link.platform === 'Web')}
 					<a
-						href={project.links.find((link) => link.platform === 'Web')?.link}
+						href={card.links.find((link) => link.platform === 'Web')?.link}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="link badge badge-neutral p-3 mr-2"
@@ -49,9 +42,9 @@
 						<Icon icon="link" />
 					</a>
 				{/if}
-				{#if project.links.find((link) => link.platform === 'Youtube')}
+				{#if card.links.find((link) => link.platform === 'Youtube')}
 					<a
-						href={project.links.find((link) => link.platform === 'Youtube')?.link}
+						href={card.links.find((link) => link.platform === 'Youtube')?.link}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="link badge badge-neutral p-3 mr-2"
@@ -60,9 +53,9 @@
 						<Icon icon="link" />
 					</a>
 				{/if}
-				{#if project.links.find((link) => link.platform === 'PlayStore')}
+				{#if card.links.find((link) => link.platform === 'PlayStore')}
 					<a
-						href={project.links.find((link) => link.platform === 'PlayStore')?.link}
+						href={card.links.find((link) => link.platform === 'PlayStore')?.link}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="link badge badge-neutral p-3 mr-2"
@@ -71,9 +64,9 @@
 						<Icon icon="link" />
 					</a>
 				{/if}
-				{#if project.links.find((link) => link.platform === 'Itch')}
+				{#if card.links.find((link) => link.platform === 'Itch')}
 					<a
-						href={project.links.find((link) => link.platform === 'Itch')?.link}
+						href={card.links.find((link) => link.platform === 'Itch')?.link}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="link badge badge-neutral p-3 mr-2"
@@ -83,42 +76,42 @@
 					</a>
 				{/if}
 			</div>
-			{#if 'stars' in project}
+			{#if 'stars' in card}
 				<a
-					href={project.repo}
+					href={card.repo}
 					target="_blank"
 					rel="noopener noreferrer"
 					class="badge badge-neutral gap-1 p-3 transition hover:border-b-base-content"
 				>
 					<Icon icon="star" />
-					{project.stars}
+					{card.stars}
 				</a>
 			{/if}
-			{#if 'from' in project}
+			{#if 'from' in card}
 				<a
-					href={project.repo}
+					href={card.repo}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="h-fit link link-hover badge badge-neutral px-3 py-1"
+					class="h-fit hover:border-b-base-content badge badge-neutral px-3 py-1"
 				>
-					{project.from?.toLocaleString('default', { month: 'short' })}
-					{project.from?.getFullYear().toString().slice(2)}
+					{card.from?.toLocaleString('default', { month: 'short' })}
+					{card.from?.getFullYear().toString().slice(2)}
 					-
-					{project.to?.toLocaleString('default', { month: 'short' })}
-					{project.to?.getFullYear().toString().slice(2)}
+					{card.to?.toLocaleString('default', { month: 'short' })}
+					{card.to?.getFullYear().toString().slice(2)}
 				</a>
 			{/if}
 		</h2>
-		<p>{@html project.description}</p>
+		<p>{@html card.description}</p>
 		<div class="card-actions justify-between pt-2">
 			<div>
-				{#each project.tags as tag}
+				{#each card.tags as tag}
 					<div class="badge badge-outline mr-1">{tag}</div>
 				{/each}
 			</div>
-			{#if 'links' in project}
+			{#if 'links' in card}
 				<div>
-					{#each project.links as links}
+					{#each card.links as links}
 						{#if links.platform !== 'Web' && links.platform !== 'Youtube' && links.platform !== 'PlayStore' && links.platform !== 'Itch'}
 							<a
 								href={links.link}

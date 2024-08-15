@@ -1,31 +1,32 @@
 
 export type ProjectData = {
-    id: number,
+    id: number;
     title: string;
     description: string;
     image: string;
     tags: string[];
     links: { platform: Platform, link: string }[];
-    repo: string;
+    repo: string | undefined;
     stars: number | undefined;
     created_at: Date | undefined;
 };
 
 export type ExperienceData = {
-    id: number,
+    id: number;
     title: string;
     description: string;
     image: string;
     links: { platform: Platform, link: string }[];
     tags: string[];
-    repo: string;
+    repo: string | undefined;
     from: Date;
     to: Date;
 };
 
 export type BlogData = {
-    id: number,
+    id: number;
     title: string;
+    repo: string | undefined
     description: string;
     image: string;
     tags: string[];
