@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page, text, selected } from '$lib/stores';
-	import type { ExperienceData, ProjectData } from '../routes/+page';
+	import type { ExperienceData, ProjectData } from '$lib/types';
 	import Icon from './icon.svelte';
 
 	export let projects: ProjectData[] | ExperienceData[];

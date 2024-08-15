@@ -6,8 +6,8 @@
 	export let data: PageData;
 </script>
 
-{#each data.projects as project}
-	<section id="id{project.id}">
-		<Project class="h-full" {project} />
+{#each data.experience as experience}
+	<section id="id{experience.id}">
+		<Project class="h-full" project={experience} />
 	</section>
 {/each}

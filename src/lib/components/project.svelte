@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Icon from './icon.svelte';
-	import type { ExperienceData, ProjectData } from '../routes/+page';
-	import { selected } from './stores';
-	import { text } from './stores';
+	import type { ExperienceData, ProjectData } from '$lib/types';
+	import { selected } from '../stores';
+	import { text } from '../stores';
 	export let project: ProjectData | ExperienceData;
 </script>
 

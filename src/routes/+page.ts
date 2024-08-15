@@ -1,57 +1,5 @@
 import type { PageLoad } from './$types';
-
-export type ProjectData = {
-    id: number,
-    title: string;
-    description: string;
-    image: string;
-    tags: string[];
-    links: { platform: Platform, link: string }[];
-    repo: string;
-    stars: number | undefined;
-    created_at: Date | undefined;
-};
-
-export type ExperienceData = {
-    id: number,
-    title: string;
-    description: string;
-    image: string;
-    links: { platform: Platform, link: string }[];
-    tags: string[];
-    repo: string;
-    from: Date;
-    to: Date;
-};
-
-export type Social = {
-    icon: IconType;
-    link: string;
-};
-
-export type Platform = 'Web' | 'PlayStore' | 'Youtube' | 'Itch' | string;
-export type IconType = 'link' | 'star' | 'star-filled' | 'youtube' | 'playstore' | 'itch' | 'sun' | 'moon' | 'github' | 'linkedin' | 'email';
-
-const socials: Social[] = [
-    {
-        icon: 'github',
-        link: 'https://github.com/sparshg'
-    },
-    {
-        icon: 'linkedin',
-        link: 'https://www.linkedin.com/in/sparshgoenka'
-    },
-    {
-        icon: 'youtube',
-        link: 'https://www.youtube.com/c/radiium'
-    },
-    {
-        icon: 'email',
-        link: 'mailto: sparshg.contact@gmail.com'
-    },
-];
-
-const about = "I like tinkering with code and making random stuff... diving into low-level graphics, playing around with Rust, making animations with code, or messing with some Android apps...\n\n It's all about learning by doing.";
+import type { ProjectData } from '$lib/types';
 
 const projects: ProjectData[] = [
     {
@@ -195,64 +143,25 @@ const projects: ProjectData[] = [
         id: 5
     },
 ];
+export const load: PageLoad = (async ({ fetch, setHeaders }) => {
 
-const experience: ExperienceData[] = [
-    {
-        title: 'Wells Fargo - Intern',
-        description: "Built two VSCode extensions for developers to reduce manual overhead. Namely, 'Proxy Orchestrator' to automatically route other extensions' traffic and 'Salesforce Diff Viewer' to integrate Git diff viewer with a Salesforce Project.",
-        image: '<img src=https://www.wellsfargo.com/assets/images/logos/wellsfargo/logo_974x1050.png class="h-44 bg-[#d61f28] w-full object-contain" />',
-        repo: '',
-        tags: ["Typescript"],
-        links: [],
-        from: new Date(2024, 5, 3),
-        to: new Date(2024, 7, 26),
-        id: 0
-    },
-    {
-        title: 'Sugar Labs - Intern (GSoC 2023)',
-        description: "Worked on porting of Sugar applications to <u>Flatpak</u> and updating the existing packages, for easy distribution across Linux distros, including two major applications, Pippy code editor and Physics simulator.",
-        image: '<div class="flex flex-col justify-center h-56 bg-white w-full"><img src=https://www.sugarlabs.org/assets/logo.png class="h-24 object-contain" /><img src=https://developers.google.com/open-source/gsoc/resources/downloads/GSoC-Horizontal.png class="h-20 object-contain" /></div>',
-        repo: 'https://summerofcode.withgoogle.com/archive/2023/projects/GUSDsFPO',
-        tags: ["Python", "Flatpaks", "GTK"],
-        links: [{
-            platform: "Certificate",
-            link: '/completion_certificate_2023_contributor.pdf'
-        }],
-        from: new Date(2023, 4, 29),
-        to: new Date(2023, 7, 28),
-        id: 1
-    },
-    {
-        title: 'Sugar Labs - Intern (GSoC 2022)',
-        description: "Maintained and improved applications for Sugar, written in <u>GTK+</u> and <u>Python</u>. Sugar labs ships these applications in various ways like with their OS, Desktop Environment, Flatpak Packages, Web versions, etc",
-        image: '<div class="flex flex-col justify-center h-56 bg-white w-full"><img src=https://www.sugarlabs.org/assets/logo.png class="h-24 object-contain" /><img src=https://developers.google.com/open-source/gsoc/resources/downloads/GSoC-Horizontal.png class="h-20 object-contain" /></div>',
-        repo: 'https://summerofcode.withgoogle.com/archive/2022/projects/sTY158cC',
-        tags: ["Python", "GTK", "PyGame"],
-        links: [{
-            platform: "Certificate",
-            link: '/completion_certificate_2022_contributor.pdf'
-        }],
-        from: new Date(2022, 5, 13),
-        to: new Date(2022, 8, 12),
-        id: 2
-    },
-];
-
-export const load = (async ({ fetch, setHeaders }) => {
-
-    setHeaders({ age: '600', 'cache-control': 'public, max-age=600' });
+    // setHeaders({ age: '600', 'cache-control': 'public, max-age=600' });
 
     if (projects[0].created_at === undefined) {
         for (let project of projects) {
-            let repo = project.repo.split('/').slice(-2).join('/');
-            let res = await fetch(`https://api.github.com/repos/${repo}`);
-            let data = await res.json();
-            project.stars = data.stargazers_count;
-            project.created_at = new Date(parseInt(data.created_at.slice(0, 4)), parseInt(data.created_at.slice(5, 7)) - 1, parseInt(data.created_at.slice(8, 10)));
-            // project.stars = 0;
-            // project.created_at = new Date("2022-01-01");
+            // let repo = project.repo.split('/').slice(-2).join('/');
+            // let res = await fetch(`https://api.github.com/repos/${repo}`);
+            // let data = await res.json();
+            // project.stars = data.stargazers_count;
+            // project.created_at = new Date(parseInt(data.created_at.slice(0, 4)), parseInt(data.created_at.slice(5, 7)) - 1, parseInt(data.created_at.slice(8, 10)));
+            project.stars = 0;
+            project.created_at = new Date("2022-01-01");
         }
     }
 
-    return { projects, experience, socials, about };
-}) satisfies PageLoad;
+    let timelineData = projects.toSorted((a, b) =>
+        b.created_at!.getTime() - a.created_at!.getTime()
+    );
+
+    return { projects, timelineData };
+});

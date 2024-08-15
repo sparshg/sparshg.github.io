@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { IconType } from '../routes/+page';
+	import type { IconType } from '$lib/types';
 	export let icon: IconType;
 </script>
 
