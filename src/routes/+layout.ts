@@ -3,6 +3,7 @@ import type { Social } from '$lib/types';
 import { base } from '$app/paths';
 
 export const prerender = true;
+export const ssr = false;
 
 const socials: Social[] = [
     {
