@@ -1,4 +1,6 @@
-<h3 class="text-5xl font-bold text-center px-16">Mappls MapMyIndia Hackathon</h3>
+<h3 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center px-12">
+	Mappls MapMyIndia Hackathon
+</h3>
 <p class="py-16">
 	Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione natus quae quo fuga neque ad
 	sapiente voluptatibus tenetur doloremque libero quidem cum alias repellat molestiae aut,
