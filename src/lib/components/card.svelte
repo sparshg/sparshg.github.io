@@ -3,11 +3,10 @@
 	import type { BlogData, ExperienceData, ProjectData } from '$lib/types';
 	import { selected } from '$lib/stores';
 	import { text } from '$lib/stores';
+	import { goto } from '$app/navigation';
+	import { base } from '$app/paths';
 	export let card: ProjectData | ExperienceData | BlogData;
 	export let cardType: 'Projects' | 'Experience' | 'Blogs';
-
-	const target = cardType === 'Blogs' ? undefined : '_blank';
-	const rel = cardType === 'Blogs' ? undefined : 'noopener noreferrer';
 </script>
 
 <div
@@ -23,22 +22,45 @@
 	}}
 	role="presentation"
 >
-	<a href={card.repo} {target} {rel}>
-		<figure class="rounded-2xl">
-			{@html card.image}
-		</figure>
-	</a>
+	{#if cardType === 'Blogs'}
+		<button on:click={() => goto(card.repo || '', { noScroll: true })}>
+			<figure class="rounded-2xl">
+				{@html card.image}
+			</figure>
+		</button>
+	{:else}
+		<a href={card.repo} target="_blank" rel="noopener noreferrer">
+			<figure class="rounded-2xl">
+				{@html card.image}
+			</figure>
+		</a>
+	{/if}
+
 	<div class="card-body">
 		<h2 class="card-title flex justify-between mb-1">
 			<div class="flex flex-wrap items-center">
-				<a class="link link-hover mr-2" href={card.repo} {target} {rel}>
-					{card.title}
-				</a>
+				{#if cardType === 'Blogs'}
+					<button
+						class="link link-hover"
+						on:click={() => goto(card.repo || '', { noScroll: true })}
+					>
+						{card.title}
+					</button>
+				{:else}
+					<a
+						class="link link-hover mr-2"
+						href={card.repo}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						{card.title}
+					</a>
+				{/if}
 				{#if card.links.find((link) => link.platform === 'Web')}
 					<a
 						href={card.links.find((link) => link.platform === 'Web')?.link}
-						{target}
-						{rel}
+						target="_blank"
+						rel="noopener noreferrer"
 						class="link badge badge-neutral p-3 mr-2"
 					>
 						Web
@@ -48,8 +70,8 @@
 				{#if card.links.find((link) => link.platform === 'Youtube')}
 					<a
 						href={card.links.find((link) => link.platform === 'Youtube')?.link}
-						{target}
-						{rel}
+						target="_blank"
+						rel="noopener noreferrer"
 						class="link badge badge-neutral p-3 mr-2"
 					>
 						<Icon icon="youtube" />
@@ -59,8 +81,8 @@
 				{#if card.links.find((link) => link.platform === 'PlayStore')}
 					<a
 						href={card.links.find((link) => link.platform === 'PlayStore')?.link}
-						{target}
-						{rel}
+						target="_blank"
+						rel="noopener noreferrer"
 						class="link badge badge-neutral p-3 mr-2"
 					>
 						<Icon icon="playstore" />
@@ -70,8 +92,8 @@
 				{#if card.links.find((link) => link.platform === 'Itch')}
 					<a
 						href={card.links.find((link) => link.platform === 'Itch')?.link}
-						{target}
-						{rel}
+						target="_blank"
+						rel="noopener noreferrer"
 						class="link badge badge-neutral p-3 mr-2"
 					>
 						<Icon icon="itch" />
@@ -82,8 +104,8 @@
 			{#if 'stars' in card}
 				<a
 					href={card.repo}
-					{target}
-					{rel}
+					target="_blank"
+					rel="noopener noreferrer"
 					class="badge badge-neutral gap-1 p-3 transition hover:border-b-base-content"
 				>
 					<Icon icon="star" />
@@ -93,8 +115,8 @@
 			{#if 'from' in card}
 				<a
 					href={card.repo}
-					{target}
-					{rel}
+					target="_blank"
+					rel="noopener noreferrer"
 					class="h-fit hover:border-b-base-content badge badge-neutral px-3 py-1"
 				>
 					{card.from?.toLocaleString('default', { month: 'short' })}
@@ -103,6 +125,14 @@
 					{card.to?.toLocaleString('default', { month: 'short' })}
 					{card.to?.getFullYear().toString().slice(2)}
 				</a>
+			{/if}
+			{#if cardType === 'Blogs'}
+				<button
+					on:click={() => goto(`${card.repo}`, { noScroll: true })}
+					class="h-fit hover:border-b-base-content badge badge-neutral px-3 py-1"
+				>
+					Expand
+				</button>
 			{/if}
 		</h2>
 		<p>{@html card.description}</p>

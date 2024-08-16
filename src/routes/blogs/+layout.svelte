@@ -4,6 +4,7 @@
 	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 	import { slide } from 'svelte/transition';
+	import { goto } from '$app/navigation';
 	export let data: LayoutData;
 </script>
 
@@ -19,11 +20,12 @@
 		transition:slide
 	>
 		<div
-			class="h-full w-full p-10 safari-only-blur overflow-y-auto overscroll-y-contain no-scrollbar font-mono text-xl"
+			class="h-full w-full py-10 px-10 md:px-32 lg:px-56 safari-only-blur overflow-y-auto overscroll-y-contain no-scrollbar font-mono text-xl flex flex-col items-center text-justify"
 		>
-			<a
-				href={`${base}/blogs`}
-				class="btn btn-lg text-4xl btn-circle btn-ghost bg-base-300/30 absolute right-8 top-8">✕</a
+			<button
+				on:click={() => goto(`${base}/blogs`, { noScroll: true })}
+				class="btn btn-lg text-4xl btn-circle btn-ghost bg-base-content/10 absolute right-8 top-8"
+				>✕</button
 			>
 			<slot />
 		</div>

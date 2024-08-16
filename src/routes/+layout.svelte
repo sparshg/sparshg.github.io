@@ -79,7 +79,10 @@
 
 			<div class="flex items-center max-lg:mt-4">
 				<div class="avatar mr-6">
-					<div class="w-16 rounded-full">
+					<div
+						class="w-16 rounded-full cursor-pointer"
+						on:pointerover={() => ($text = 'echo Hello World!')}
+					>
 						<img src="https://avatars.githubusercontent.com/u/43041139" alt="user-icon" />
 					</div>
 				</div>

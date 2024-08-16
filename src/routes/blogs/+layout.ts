@@ -4,12 +4,14 @@ import { base } from '$app/paths';
 
 const blogs: BlogData[] = [
     {
-        title: 'ICPR 2024 Paper',
-        description: 'Todo',
+        title: 'Anomaly Detection in Thermal Videos',
+        description: 'A frame-level unsupervised approach that learns two sets of features from two different encoders in a disentangled fashion. The proposed approach outperforms state-of-the-art models for anomaly detection from visible and thermal spectrum.',
         image: `<img src="${base}/images/dfed.png" />`,
-        tags: ["OpenGL", "C++", "CMake"],
-        links: [],
-        repo: `${base}/blogs/first`,
+        tags: ["Python", "PyTorch"],
+        links: [{
+            platform: 'Publication',
+            link: 'https://icpr2024.org'
+        }], repo: `${base}/blogs/icpr2024`,
         created_at: new Date(2024, 3, 10),
         id: 0,
     },
@@ -26,7 +28,7 @@ const blogs: BlogData[] = [
     {
         title: 'OpenGL Workshop',
         description: 'Todo',
-        image: `<img src="${base}/images/out.png" />`,
+        image: `<img src="${base}/images/mandel.png" />`,
         tags: ["OpenGL", "C++"],
         links: [],
         repo: `${base}/blogs/first`,
