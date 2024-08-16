@@ -5,12 +5,6 @@
 	import { page } from '$app/stores';
 	import { slide } from 'svelte/transition';
 	export let data: LayoutData;
-
-	$: if ($page.url.pathname.startsWith(`${base}/blogs/`)) {
-		document.documentElement.style.overflow = 'hidden';
-	} else {
-		document.documentElement.style.overflow = '';
-	}
 </script>
 
 {#each data.blogs as blogs}
@@ -20,14 +14,31 @@
 {/each}
 
 {#if $page.url.pathname.startsWith(`${base}/blogs/`)}
-	<div class="fixed inset-0 flex items-center justify-center bg-base-200/40" transition:slide>
+	<div
+		class="fixed inset-0 flex items-center justify-center bg-base-200/70 backdrop-blur-2xl"
+		transition:slide
+	>
 		<div
-			class="h-[calc(100%-2rem)] w-[calc(100%-2rem)] rounded-xl backdrop-blur-3xl p-10 overflow-y-auto overscroll-y-contain no-scrollbar"
+			class="h-full w-full p-10 safari-only-blur overflow-y-auto overscroll-y-contain no-scrollbar font-mono text-xl"
 		>
-			<a href="{base}/blogs" class="btn btn-lg text-2xl btn-circle btn-ghost absolute right-8 top-8"
-				>✕</a
+			<a
+				href={`${base}/blogs`}
+				class="btn btn-lg text-4xl btn-circle btn-ghost bg-base-300/30 absolute right-8 top-8">✕</a
 			>
 			<slot />
 		</div>
 	</div>
 {/if}
+
+<style>
+	@supports (hanging-punctuation: first) and (font: -apple-system-body) and
+		(-webkit-appearance: none) {
+		.safari-only-blur {
+			--tw-backdrop-blur: blur(40px);
+			backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness)
+				var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate)
+				var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate)
+				var(--tw-backdrop-sepia);
+		}
+	}
+</style>

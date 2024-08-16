@@ -10,7 +10,7 @@ const blogs: BlogData[] = [
         tags: ["OpenGL", "C++", "CMake"],
         links: [],
         repo: `${base}/blogs/first`,
-        created_at: new Date(2022, 10, 10),
+        created_at: new Date(2024, 3, 10),
         id: 0,
     },
     {
@@ -20,8 +20,8 @@ const blogs: BlogData[] = [
         tags: ["Flutter", "Flask", "Tensorflow"],
         links: [],
         repo: `${base}/blogs/first`,
-        created_at: new Date(2022, 10, 10),
-        id: 0,
+        created_at: new Date(2024, 3, 7),
+        id: 1,
     },
     {
         title: 'OpenGL Workshop',
@@ -30,12 +30,15 @@ const blogs: BlogData[] = [
         tags: ["OpenGL", "C++"],
         links: [],
         repo: `${base}/blogs/first`,
-        created_at: new Date(2022, 10, 10),
-        id: 1,
+        created_at: new Date(2024, 10, 10),
+        id: 2,
     },
 ];
 
 export const load: LayoutLoad = async () => {
+    for (let blog of blogs) {
+        // blog.repo += `#id${blog.id}`;
+    }
     let timelineData = blogs.toSorted((a, b) =>
         b.created_at.getTime() - a.created_at.getTime()
     );

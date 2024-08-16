@@ -1,5 +1,5 @@
-<h3 class="text-5xl font-bold text-center font-mono">Mappls MapMyIndia Hackathon</h3>
-<p class="py-16 text-xl font-mono">
+<h3 class="text-5xl font-bold text-center px-16">Mappls MapMyIndia Hackathon</h3>
+<p class="py-16">
 	Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione natus quae quo fuga neque ad
 	sapiente voluptatibus tenetur doloremque libero quidem cum alias repellat molestiae aut,
 	exercitationem impedit sed nobis? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint
@@ -16,7 +16,7 @@
 	assumenda porro exercitationem ipsa animi beatae debitis rerum hic odio illo? Reiciendis cumque
 	corrupti aperiam pariatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
 </p>
-<p class="py-4 text-3xl">
+<p class="py-4">
 	Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione natus quae quo fuga neque ad
 	sapiente voluptatibus tenetur doloremque libero quidem cum alias repellat molestiae aut,
 	exercitationem impedit sed nobis? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint

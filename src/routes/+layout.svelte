@@ -21,7 +21,9 @@
 			<div class="max-lg:contents">
 				<h1 class="font-bold text-3xl md:text-6xl 2xl:text-7xl">Sparsh Goenka</h1>
 				<Typewriter
-					class="sticky top-0 z-50 py-3 my-1 -mx-5 px-5 max-lg:bg-base-100"
+					class="{$page.url.pathname.startsWith(`${base}/blogs/`)
+						? ''
+						: 'sticky'} top-0 z-50 py-3 my-1 -mx-5 px-5 max-lg:bg-base-100"
 					input={$text}
 				/>
 			</div>
