@@ -24,7 +24,7 @@
 		<div class="text-xl 2xl:text-3xl font-mono">
 			<a href="{base}/">
 				<button
-					class="w-full cursor-pointer {$page.url.pathname == `${base}/`
+					class="w-full cursor-pointer {data.path == ''
 						? 'bg-base-content text-base-100'
 						: 'hover:outline bg-base-300'} p-1 mb-2"
 					on:click={() => ($text = 'cd ~/Projects/')}
@@ -34,7 +34,7 @@
 			>
 			<a href="{base}/experience"
 				><button
-					class="w-full cursor-pointer {$page.url.pathname == `${base}/experience`
+					class="w-full cursor-pointer {data.path == 'experience'
 						? 'bg-base-content text-base-100'
 						: 'hover:outline bg-base-300'} p-1 mb-2"
 					on:click={() => ($text = 'cd ~/Experience/')}
@@ -44,7 +44,7 @@
 			>
 			<a href="{base}/blogs">
 				<button
-					class="w-full cursor-pointer {$page.url.pathname == `${base}/blogs`
+					class="w-full cursor-pointer {data.path == 'blogs'
 						? 'bg-base-content text-base-100'
 						: 'hover:outline bg-base-300'} p-1"
 					on:click={() => ($text = 'cd ~/Blogs/')}
@@ -101,7 +101,7 @@
 		</div>
 	</div>
 	<div class="lg:w-[45%]">
-		{#key data.url}
+		{#key data.path}
 			<div
 				class="grid gap-x-6 gap-y-8 max-lg:justify-between max-lg:mt-12 lg:grid-cols-1 md:grid-cols-2 grid-cols-1"
 				in:fly={{ x: -100, duration: 500, delay: 500 }}

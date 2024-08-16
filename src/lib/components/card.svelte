@@ -5,6 +5,9 @@
 	import { text } from '$lib/stores';
 	export let card: ProjectData | ExperienceData | BlogData;
 	export let cardType: 'Projects' | 'Experience' | 'Blogs';
+
+	const target = cardType === 'Blogs' ? undefined : '_blank';
+	const rel = cardType === 'Blogs' ? undefined : 'noopener noreferrer';
 </script>
 
 <div
@@ -20,7 +23,7 @@
 	}}
 	role="presentation"
 >
-	<a href={card.repo} target="_blank" rel="noopener noreferrer">
+	<a href={card.repo} {target} {rel}>
 		<figure class="rounded-2xl">
 			{@html card.image}
 		</figure>
@@ -28,14 +31,14 @@
 	<div class="card-body">
 		<h2 class="card-title flex justify-between mb-1">
 			<div class="flex flex-wrap items-center">
-				<a class="link link-hover mr-2" href={card.repo} target="_blank" rel="noopener noreferrer">
+				<a class="link link-hover mr-2" href={card.repo} {target} {rel}>
 					{card.title}
 				</a>
 				{#if card.links.find((link) => link.platform === 'Web')}
 					<a
 						href={card.links.find((link) => link.platform === 'Web')?.link}
-						target="_blank"
-						rel="noopener noreferrer"
+						{target}
+						{rel}
 						class="link badge badge-neutral p-3 mr-2"
 					>
 						Web
@@ -45,8 +48,8 @@
 				{#if card.links.find((link) => link.platform === 'Youtube')}
 					<a
 						href={card.links.find((link) => link.platform === 'Youtube')?.link}
-						target="_blank"
-						rel="noopener noreferrer"
+						{target}
+						{rel}
 						class="link badge badge-neutral p-3 mr-2"
 					>
 						<Icon icon="youtube" />
@@ -56,8 +59,8 @@
 				{#if card.links.find((link) => link.platform === 'PlayStore')}
 					<a
 						href={card.links.find((link) => link.platform === 'PlayStore')?.link}
-						target="_blank"
-						rel="noopener noreferrer"
+						{target}
+						{rel}
 						class="link badge badge-neutral p-3 mr-2"
 					>
 						<Icon icon="playstore" />
@@ -67,8 +70,8 @@
 				{#if card.links.find((link) => link.platform === 'Itch')}
 					<a
 						href={card.links.find((link) => link.platform === 'Itch')?.link}
-						target="_blank"
-						rel="noopener noreferrer"
+						{target}
+						{rel}
 						class="link badge badge-neutral p-3 mr-2"
 					>
 						<Icon icon="itch" />
@@ -79,8 +82,8 @@
 			{#if 'stars' in card}
 				<a
 					href={card.repo}
-					target="_blank"
-					rel="noopener noreferrer"
+					{target}
+					{rel}
 					class="badge badge-neutral gap-1 p-3 transition hover:border-b-base-content"
 				>
 					<Icon icon="star" />
@@ -90,8 +93,8 @@
 			{#if 'from' in card}
 				<a
 					href={card.repo}
-					target="_blank"
-					rel="noopener noreferrer"
+					{target}
+					{rel}
 					class="h-fit hover:border-b-base-content badge badge-neutral px-3 py-1"
 				>
 					{card.from?.toLocaleString('default', { month: 'short' })}

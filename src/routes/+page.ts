@@ -143,19 +143,20 @@ const projects: ProjectData[] = [
         id: 5
     },
 ];
-export const load: PageLoad = (async ({ fetch, setHeaders }) => {
+export const load: PageLoad = async ({ fetch, setHeaders }) => {
 
     // setHeaders({ age: '600', 'cache-control': 'public, max-age=600' });
 
     if (projects[0].created_at === undefined) {
         for (let project of projects) {
-            // let repo = project.repo.split('/').slice(-2).join('/');
-            // let res = await fetch(`https://api.github.com/repos/${repo}`);
-            // let data = await res.json();
-            // project.stars = data.stargazers_count;
-            // project.created_at = new Date(parseInt(data.created_at.slice(0, 4)), parseInt(data.created_at.slice(5, 7)) - 1, parseInt(data.created_at.slice(8, 10)));
-            project.stars = 0;
-            project.created_at = new Date("2022-01-01");
+            if (!project.repo) continue;
+            let repo = project.repo.split('/').slice(-2).join('/');
+            let res = await fetch(`https://api.github.com/repos/${repo}`);
+            let data = await res.json();
+            project.stars = data.stargazers_count;
+            project.created_at = new Date(parseInt(data.created_at.slice(0, 4)), parseInt(data.created_at.slice(5, 7)) - 1, parseInt(data.created_at.slice(8, 10)));
+            // project.stars = 0;
+            // project.created_at = new Date("2022-01-01");
         }
     }
 
@@ -164,4 +165,4 @@ export const load: PageLoad = (async ({ fetch, setHeaders }) => {
     );
 
     return { projects, timelineData };
-});
+}
