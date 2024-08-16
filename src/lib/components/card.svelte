@@ -41,7 +41,7 @@
 			<div class="flex flex-wrap items-center">
 				{#if cardType === 'Blogs'}
 					<button
-						class="link link-hover"
+						class="link link-hover mr-2 text-left"
 						on:click={() => goto(card.repo || '', { noScroll: true })}
 					>
 						{card.title}
