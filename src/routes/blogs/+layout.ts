@@ -20,7 +20,10 @@ const blogs: BlogData[] = [
         description: 'Real-time pothole detection using gyroscope and accelerometer data from various smartphones, combined with a CNN-based machine learning model for accurate prediction.',
         image: '<img src="https://repository-images.githubusercontent.com/163664171/79a24eb9-077c-48a1-9caa-41fcf7e1db1c" />',
         tags: ["Flutter", "Python", "Flask", "Keras"],
-        links: [],
+        links: [{
+            platform: 'GitHub',
+            link: 'https://github.com/sparshg/map-hackathon'
+        }],
         repo: `${base}/blogs/map-hackathon`,
         created_at: new Date(2024, 3, 7),
         id: 1,

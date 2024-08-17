@@ -8,7 +8,7 @@
 
 <p class="py-12">
 	Participating in hackathons is always a thrilling experience, and the Mappls MapmyIndia Hackathon,
-	part of our college's tech fest APGEE 2024, was no exception. Our team, consisting of me and my
+	part of our college's tech fest APOGEE 2024, was no exception. Our team, consisting of me and my
 	friend, took on the challenge of creating something innovative using the Mappls API over the
 	weekend. With AI being the buzzword these days, we felt compelled to include it in our project.
 </p>
@@ -23,6 +23,8 @@
 <p class="pb-8">
 	To bring our idea to life, we needed to train an AI model. We referred to an academic paper titled <a
 		href="https://www.mdpi.com/1424-8220/23/22/9023"
+		target="_blank"
+		rel="noopener noreferrer"
 		class="link link-hover text-blue-400"
 		>"Real-Time Pothole Detection Using Smartphone Sensors and Machine Learning"</a
 	> to replicate the model's architecture.
@@ -66,8 +68,11 @@
 		be marked on the route of the map. <b>(Python + Flask)</b>
 	</li>
 </ul>
-<div class="flex flex-row size-full justify-around pb-12">
+<div
+	class="flex flex-row no-scrollbar lg:justify-center justify-start pb-12 size-full overflow-auto flex-shrink-0 contain-content"
+>
 	<img src="{base}/images/map-1.jpg" alt="" />
+	<div class="min-w-4"></div>
 	<img src="{base}/images/map-2.jpg" alt="" />
 </div>
 <h3 class="place-self-start font-bold text-xl pb-4">Pitching the Idea:</h3>
@@ -80,17 +85,23 @@
 </p>
 <h3 class="place-self-start font-bold text-xl pb-4">Conclusion:</h3>
 <p class="pb-4">
-	Of course, our over-the-weekend solution isn't perfect, nor tested in real-world scenarios. There
-	can be lot of optimizations, for example, our AI model could potentially run on the client-side
-	using TensorFlow Lite (TFLite) on a separate thread, which would eliminate the need to send large
-	amounts of sensor data to the server.
+	Of course, our over-the-weekend solution isn't perfect, nor tested in real-world scenarios.
+	Currently a single data chunk contains last 2 seconds of sensor data and their coordinates,
+	sampled at 50Hz, sent to the server. This would be a lot of data to send and process as the number
+	of clients increase. But, there's room for lot of optimizations.
 </p>
 <p class="pb-8">
-	Currently we are sending last 2 seconds of data at 50Hz to the server, which is a lot of data to
-	process and store. We could also use a more sophisticated model like a Recurrent Neural Network
-	(RNN) or Long Short-Term Memory (LSTM) network to capture the temporal dependencies in the data.
+	For example, our AI model could potentially run on the client-side using TensorFlow Lite (TFLite)
+	on a separate thread, which would eliminate the need to send large amounts of sensor data to the
+	server. We could also use a more sophisticated model like a Recurrent Neural Network (RNN) or Long
+	Short-Term Memory (LSTM) network to capture the temporal dependencies in the data.
 </p>
 <p class="pb-4">
 	Anyways, it was a great experience and we got the second prize in the hackathon. Not bad for a
-	weekend's work for a generous cash prize!
+	weekend's work for a generous prize amount! <a
+		href="https://github.com/sparshg/map-hackathon"
+		class="link link-hover text-blue-400"
+		target="_blank"
+		rel="noopener noreferrer">Open Repo...</a
+	>
 </p>

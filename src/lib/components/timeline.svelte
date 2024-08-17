@@ -10,7 +10,9 @@
 	const titleMap = new Map([
 		['BITS Wi-Fi Login', 'Wi-Fi'],
 		['The Block Game', 'BlockGame'],
-		['Tic-Tac-Toe', 'TicTacToe']
+		['Tic-Tac-Toe', 'TicTacToe'],
+		['MapMyIndia Hackathon', 'Hackathon'],
+		['Anomaly Detection in Thermal Videos', "ICPR'24"]
 	]);
 
 	let yearMap: Map<number, number>;

@@ -24,7 +24,7 @@
 		>
 			<button
 				on:click={() => goto(`${base}/blogs`, { noScroll: true })}
-				class="btn btn-md lg:btn-lg text-2xl lg:text-4xl btn-circle btn-ghost bg-base-content/10 absolute right-8 top-8"
+				class="btn btn-md lg:btn-lg text-2xl lg:text-4xl btn-circle btn-ghost bg-base-content/30 backdrop-blur-lg absolute right-8 top-8 z-10"
 				>✕</button
 			>
 			<slot />

@@ -100,6 +100,17 @@
 						<Icon icon="link" />
 					</a>
 				{/if}
+				{#if card.links.find((link) => link.platform === 'GitHub')}
+					<a
+						href={card.links.find((link) => link.platform === 'GitHub')?.link}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="link badge badge-neutral p-3 mr-2"
+					>
+						<Icon icon="github" />
+						<Icon icon="link" />
+					</a>
+				{/if}
 			</div>
 			{#if 'stars' in card}
 				<a
@@ -145,7 +156,7 @@
 			{#if 'links' in card}
 				<div>
 					{#each card.links as links}
-						{#if links.platform !== 'Web' && links.platform !== 'Youtube' && links.platform !== 'PlayStore' && links.platform !== 'Itch'}
+						{#if links.platform !== 'Web' && links.platform !== 'Youtube' && links.platform !== 'PlayStore' && links.platform !== 'Itch' && links.platform !== 'GitHub'}
 							<a
 								href={links.link}
 								target="_blank"
