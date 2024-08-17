@@ -24,9 +24,21 @@ const experience: ExperienceData[] = [
             platform: "Certificate",
             link: `${base}/completion_certificate_2023_contributor.pdf`
         }],
-        from: new Date(2023, 4, 29),
+        // from: new Date(2023, 4, 29), //actual
+        from: new Date(2023, 5, 1),
         to: new Date(2023, 7, 28),
         id: 1
+    },
+    {
+        title: 'Centre for Railway Information Systems (CRIS) - Intern',
+        description: "Collaborated with the CRIS team to enhance system efficiency through detailed analysis and feedback of the Crew Management System (CMS) at the local headquarters.",
+        image: '<img src=https://convergenttec.com/wp-content/uploads/2014/10/railway_logo.png />',
+        repo: undefined,
+        tags: ["Java", "Spring Boot"],
+        links: [],
+        from: new Date(2023, 4, 27),
+        to: new Date(2023, 6, 21),
+        id: 2
     },
     {
         title: 'Sugar Labs - Intern (GSoC 2022)',
@@ -40,7 +52,7 @@ const experience: ExperienceData[] = [
         }],
         from: new Date(2022, 5, 13),
         to: new Date(2022, 8, 12),
-        id: 2
+        id: 3
     },
 ];
 

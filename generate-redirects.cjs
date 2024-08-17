@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const redirects = {
-  '/wifi-login': 'https://github.com/sparshg/wifi-login',
-  '/block-game': 'https://github.com/sparshg/block-game',
+  '/wifi-login': 'https://play.google.com/store/apps/details?id=dev.sparshg.bitslogin',
+  '/block-game': 'https://sparshg.itch.io/the-block-game',
   '/sms': 'https://play.google.com/store/apps/details?id=com.cc.sms_2023_cc',
 };
 

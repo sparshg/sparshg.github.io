@@ -12,7 +12,8 @@
 		['The Block Game', 'BlockGame'],
 		['Tic-Tac-Toe', 'TicTacToe'],
 		['MapMyIndia Hackathon', 'Hackathon'],
-		['Anomaly Detection in Thermal Videos', "ICPR'24"]
+		['Anomaly Detection in Thermal Videos', "ICPR'24"],
+		['Centre for Railway Information Systems (CRIS) - Intern', 'CRIS']
 	]);
 
 	let yearMap: Map<number, number>;
@@ -83,7 +84,7 @@
 				id={'#id' + project.id}
 			>
 				{#if 'from' in project}
-					{project.title.split('-')[0].slice(0, -1)}
+					{titleMap.get(project.title) || project.title.split('-')[0].slice(0, -1)}
 				{:else}
 					{titleMap.get(project.title) || project.title.split(' ')[0]}
 				{/if}
