@@ -112,7 +112,7 @@
 					</a>
 				{/if}
 			</div>
-			{#if 'stars' in card}
+			{#if 'stars' in card && card.stars !== undefined}
 				<a
 					href={card.repo}
 					target="_blank"

@@ -7,7 +7,7 @@
 	let text = '';
 	let state: 'typing' | 'deleting' | 'idle' = 'idle';
 	let blinking = false;
-	let interval: number;
+	let interval: NodeJS.Timeout;
 
 	function getLastCommon() {
 		let i = 0;

@@ -72,7 +72,9 @@
 					class="basis-5/12 fade-mask-y max-lg:fade-mask-x content-center no-scrollbar overflow-auto lg:max-h-[calc(100vh-32rem)]"
 				>
 					<div class="lg:h-[calc(25vh-9rem)]" />
-					<Timeline cards={$page.data.timelineData} />
+					{#if $page.data.timelineData}
+						<Timeline cards={$page.data.timelineData} />
+					{/if}
 					<div class="lg:h-[calc(25vh-9rem)]" />
 				</div>
 			</div>

@@ -1,5 +1,6 @@
 import type { PageLoad } from './$types';
 import type { ProjectData } from '$lib/types';
+import { base } from '$app/paths';
 
 const projects: ProjectData[] = [
     {
@@ -99,6 +100,22 @@ const projects: ProjectData[] = [
         id: 3
     },
     {
+        title: 'Stock Market Simulator',
+        description: "App made for college's annual tech fest to simulate real scenarios of stock market. Provides interface to buy and sell the stocks, news section for updates, leaderboard, and wallet to redeem the points collected.",
+        repo: 'https://play.google.com/store/apps/details?id=com.cc.sms_2023_cc',
+        tags: ['Flutter', 'Firebase', 'WebSockets'],
+        links: [
+            {
+                platform: 'PlayStore',
+                link: 'https://play.google.com/store/apps/details?id=com.cc.sms_2023_cc',
+            }
+        ],
+        id: 4,
+        image: `<img src=${base}/images/sms.png />`,
+        stars: undefined,
+        created_at: new Date(2024, 1, 18),
+    },
+    {
         title: "The Block Game",
         description: "A unique game where your cube can topple around the big cube, but be careful, the floor explodes! Collect all the lucky blocks or play with a friend in split screen mode.",
         repo: 'https://github.com/sparshg/block-game',
@@ -120,7 +137,7 @@ const projects: ProjectData[] = [
         ],
         stars: undefined,
         created_at: undefined,
-        id: 4
+        id: 5
     },
     {
         title: "Tic-Tac-Toe",
@@ -140,7 +157,7 @@ const projects: ProjectData[] = [
         ],
         stars: undefined,
         created_at: undefined,
-        id: 5
+        id: 6
     },
 ];
 export const load: PageLoad = async ({ fetch, setHeaders }) => {
@@ -149,7 +166,7 @@ export const load: PageLoad = async ({ fetch, setHeaders }) => {
 
     if (projects[0].created_at === undefined) {
         for (let project of projects) {
-            if (!project.repo) continue;
+            if (!project.repo || !project.repo.startsWith('https://github.com/')) continue;
             let repo = project.repo.split('/').slice(-2).join('/');
             let res = await fetch(`https://api.github.com/repos/${repo}`);
             let data = await res.json();
