@@ -19,7 +19,7 @@
 			class="max-lg:contents lg:fixed lg:w-[45%] lg:h-[calc(100vh-7rem)] flex flex-col justify-between"
 		>
 			<div class="max-lg:contents">
-				<h1 class="font-bold text-3xl md:text-6xl 2xl:text-7xl">Sparsh Goenka</h1>
+				<h1 class="font-bold text-4xl md:text-6xl 2xl:text-7xl">Sparsh Goenka</h1>
 				<Typewriter
 					class="{$page.url.pathname.startsWith(`${base}/blogs/`)
 						? ''

@@ -100,7 +100,7 @@ const projects: ProjectData[] = [
     },
     {
         title: "The Block Game",
-        description: "A simple block game where you have to stack the blocks as high as possible. The game has a leaderboard and a global highscore system.",
+        description: "A unique game where your cube can topple around the big cube, but be careful, the floor explodes! Collect all the lucky blocks or play with a friend in split screen mode.",
         repo: 'https://github.com/sparshg/block-game',
         image: '<img src=https://github.com/sparshg/block-game/assets/43041139/c01e39c0-d5d2-4c4a-b132-6fffcebeed89 />',
         tags: ['Unity', 'C#', 'ShaderLab'],
