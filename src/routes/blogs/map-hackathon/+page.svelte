@@ -69,13 +69,14 @@
 	</li>
 </ul>
 <div
-	class="flex flex-row no-scrollbar lg:justify-center justify-start pb-12 size-full overflow-auto flex-shrink-0 contain-content"
+	class="flex flex-row no-scrollbar lg:justify-center justify-start size-full overflow-auto flex-shrink-0 contain-content"
 >
-	<img src="{base}/images/map-1.jpg" alt="" />
-	<div class="min-w-4"></div>
 	<img src="{base}/images/map-2.jpg" alt="" />
+	<div class="min-w-4"></div>
+	<img src="{base}/images/map-1.jpg" alt="" />
 </div>
-<h3 class="place-self-start font-bold text-xl pb-4">Pitching the Idea:</h3>
+<div class="sm:hidden pt-8">>> scroll >></div>
+<h3 class="place-self-start font-bold text-xl pb-4 pt-12">Pitching the Idea:</h3>
 <p class="pb-12">
 	We pitched our idea and showed the live demo to the organizers including the CEO, they seemed
 	impressed and mentioned that they were working on a similar project. We discussed many aspects of
