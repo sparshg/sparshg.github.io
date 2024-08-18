@@ -19,9 +19,13 @@ const socials: Social[] = [
         link: 'https://www.youtube.com/c/radiium'
     },
     {
-        icon: 'email',
-        link: 'mailto: sparshg.contact@gmail.com'
+        icon: 'twitter',
+        link: 'https://www.x.com/_sparshg'
     },
+    // {
+    //     icon: 'email',
+    //     link: 'mailto: sparshg.contact@gmail.com'
+    // },
 ];
 
 const about = "I like tinkering with code and making random stuff... diving into low-level graphics, playing around with Rust, making animations with code, or messing with some Android apps...\n\n It's all about learning by doing.";
