@@ -4,6 +4,7 @@ const redirects = {
   '/wifi-login': 'https://play.google.com/store/apps/details?id=dev.sparshg.bitslogin',
   '/block-game': 'https://sparshg.itch.io/the-block-game',
   '/sms': 'https://play.google.com/store/apps/details?id=com.cc.sms_2023_cc',
+  '/map-hackathon': 'https://sparshg.dev/blogs/map-hackathon',
 };
 
 const outputDir = path.resolve(__dirname, 'build');
