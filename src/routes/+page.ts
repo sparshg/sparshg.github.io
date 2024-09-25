@@ -64,19 +64,15 @@ const projects: ProjectData[] = [
         id: 1
     },
     {
-        title: "BITS Wi-Fi Login",
-        description: "An app that allows you to login to captive portal of BITS (Pilani, Goa, Hyderabad) campus Wi-Fi without requiring you to sign-in manually.",
-        repo: 'https://github.com/sparshg/wifi-login',
-        image: '<img src=https://raw.githubusercontent.com/sparshg/wifi-login/main/demo/icon.png class="w-3/5" />',
-        tags: ['Kotlin', 'Jetpack Compose'],
+        title: "Battleship Multiplayer",
+        description: "A multiplayer battleship game implemented with <u>WebSockets</u> for real-time communication. Supports multiple rooms, session retention on refresh. Dockerized and deployed, fully scalable.",
+        repo: 'https://github.com/sparshg/battleship',
+        image: '<img src=https://github.com/sparshg/battleship/blob/main/demo/1.png?raw=true />',
+        tags: ['Typescript', 'Rust', 'WebSockets', 'Docker', 'Postgres', 'Svelte'],
         links: [
             {
-                platform: 'PlayStore',
-                link: 'https://play.google.com/store/apps/details?id=dev.sparshg.bitslogin',
-            },
-            {
-                platform: 'Android',
-                link: 'https://play.google.com/store/apps/details?id=dev.sparshg.bitslogin',
+                platform: 'Web',
+                link: 'https://sparshg.github.io/battleship/',
             },
         ],
         stars: undefined,
@@ -100,6 +96,26 @@ const projects: ProjectData[] = [
         id: 3
     },
     {
+        title: "BITS Wi-Fi Login",
+        description: "An app that allows you to login to captive portal of BITS (Pilani, Goa, Hyderabad) campus Wi-Fi without requiring you to sign-in manually.",
+        repo: 'https://github.com/sparshg/wifi-login',
+        image: '<img src=https://raw.githubusercontent.com/sparshg/wifi-login/main/demo/icon.png class="w-3/5" />',
+        tags: ['Kotlin', 'Jetpack Compose'],
+        links: [
+            {
+                platform: 'PlayStore',
+                link: 'https://play.google.com/store/apps/details?id=dev.sparshg.bitslogin',
+            },
+            {
+                platform: 'Android',
+                link: 'https://play.google.com/store/apps/details?id=dev.sparshg.bitslogin',
+            },
+        ],
+        stars: undefined,
+        created_at: undefined,
+        id: 4
+    },
+    {
         title: 'Stock Market Simulator',
         description: "App made for college's annual tech fest to simulate real scenarios of stock market. Provides interface to buy and sell the stocks, news section for updates, leaderboard, and wallet to redeem the points collected.",
         repo: 'https://play.google.com/store/apps/details?id=com.cc.sms_2023_cc',
@@ -110,7 +126,7 @@ const projects: ProjectData[] = [
                 link: 'https://play.google.com/store/apps/details?id=com.cc.sms_2023_cc',
             }
         ],
-        id: 4,
+        id: 5,
         image: `<img src=${base}/images/sms.png />`,
         stars: undefined,
         created_at: new Date(2024, 1, 18),
@@ -137,7 +153,7 @@ const projects: ProjectData[] = [
         ],
         stars: undefined,
         created_at: undefined,
-        id: 5
+        id: 6
     },
     {
         title: "Tic-Tac-Toe",
@@ -157,7 +173,7 @@ const projects: ProjectData[] = [
         ],
         stars: undefined,
         created_at: undefined,
-        id: 6
+        id: 7
     },
 ];
 export const load: PageLoad = async ({ fetch, setHeaders }) => {
@@ -170,10 +186,13 @@ export const load: PageLoad = async ({ fetch, setHeaders }) => {
             let repo = project.repo.split('/').slice(-2).join('/');
             let res = await fetch(`https://api.github.com/repos/${repo}`);
             let data = await res.json();
-            project.stars = data.stargazers_count;
-            project.created_at = new Date(parseInt(data.created_at.slice(0, 4)), parseInt(data.created_at.slice(5, 7)) - 1, parseInt(data.created_at.slice(8, 10)));
-            // project.stars = 0;
-            // project.created_at = new Date("2022-01-01");
+            if (!import.meta.env.DEV) {
+                project.stars = data.stargazers_count;
+                project.created_at = new Date(parseInt(data.created_at.slice(0, 4)), parseInt(data.created_at.slice(5, 7)) - 1, parseInt(data.created_at.slice(8, 10)));
+            } else {
+                project.stars = 0;
+                project.created_at = new Date("2022-01-01");
+            }
         }
     }
 
