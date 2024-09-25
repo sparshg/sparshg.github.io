@@ -39,7 +39,7 @@ const projects: ProjectData[] = [
         title: "PID Controller",
         description: "A PID controller simulation with many adjustable parameters and real-time graph plotting. Physics engine implemented from scratch with Range-Kutta 4 integration.",
         repo: 'https://github.com/sparshg/pid-balancer',
-        image: '<img src=https://github.com/user-attachments/assets/6c44b9cd-5ed8-4dcf-99cf-d84df6c64af7 />',
+        image: '<img src=https://github.com/user-attachments/assets/7dae2fd2-5dac-48cd-b440-f2f13524ac41 />',
         tags: ['Rust', 'WASM'],
         links: [
             {
