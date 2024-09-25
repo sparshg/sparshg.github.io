@@ -129,7 +129,7 @@ const projects: ProjectData[] = [
         id: 5,
         image: `<img src=${base}/images/sms.png />`,
         stars: undefined,
-        created_at: new Date(2024, 1, 18),
+        created_at: new Date(2023, 5, 18),
     },
     {
         title: "The Block Game",
@@ -183,10 +183,10 @@ export const load: PageLoad = async ({ fetch, setHeaders }) => {
     if (projects[0].created_at === undefined) {
         for (let project of projects) {
             if (!project.repo || !project.repo.startsWith('https://github.com/')) continue;
-            let repo = project.repo.split('/').slice(-2).join('/');
-            let res = await fetch(`https://api.github.com/repos/${repo}`);
-            let data = await res.json();
             if (!import.meta.env.DEV) {
+                let repo = project.repo.split('/').slice(-2).join('/');
+                let res = await fetch(`https://api.github.com/repos/${repo}`);
+                let data = await res.json();
                 project.stars = data.stargazers_count;
                 project.created_at = new Date(parseInt(data.created_at.slice(0, 4)), parseInt(data.created_at.slice(5, 7)) - 1, parseInt(data.created_at.slice(8, 10)));
             } else {
@@ -197,7 +197,7 @@ export const load: PageLoad = async ({ fetch, setHeaders }) => {
     }
 
     let timelineData = projects.toSorted((a, b) =>
-        b.created_at!.getTime() - a.created_at!.getTime()
+        a.created_at!.getTime() - b.created_at!.getTime()
     );
 
     return { projects, timelineData };

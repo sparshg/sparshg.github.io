@@ -22,7 +22,7 @@
 
 	function getYearMap() {
 		let yearMap = new Map();
-		for (const project of cards.slice().reverse()) {
+		for (const project of cards.slice()) {
 			if ('from' in project) {
 				if (!yearMap.has(project.from?.getFullYear())) {
 					yearMap.set(project.from?.getFullYear(), project.id);

@@ -8,6 +8,14 @@
 	import { fly } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import { base } from '$app/paths';
+	import { onMount } from 'svelte';
+
+	let timeline_par: HTMLDivElement;
+
+	const scrollToBottom = async (node: HTMLDivElement) => {
+		node.scroll({ top: 99999, left: 99999, behavior: 'smooth' });
+	};
+	onMount(() => scrollToBottom(timeline_par));
 
 	export let data: LayoutData;
 </script>
@@ -70,6 +78,7 @@
 				</p>
 				<div
 					class="basis-5/12 fade-mask-y max-lg:fade-mask-x content-center no-scrollbar overflow-auto lg:max-h-[calc(100vh-32rem)]"
+					bind:this={timeline_par}
 				>
 					<div class="lg:h-[calc(25vh-9rem)]" />
 					{#if $page.data.timelineData}
