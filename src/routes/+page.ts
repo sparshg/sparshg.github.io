@@ -65,7 +65,7 @@ const projects: ProjectData[] = [
     },
     {
         title: "Battleship Multiplayer",
-        description: "A multiplayer battleship game implemented with <u>WebSockets</u> for real-time communication. Supports multiple rooms, session retention on refresh. Dockerized and deployed, fully scalable.",
+        description: "A multiplayer battleship game implemented with <u>WebSockets</u> for real-time communication. Supports multiple rooms, and session retention on refresh..",
         repo: 'https://github.com/sparshg/battleship',
         image: '<img src=https://github.com/sparshg/battleship/blob/main/demo/1.png?raw=true />',
         tags: ['Typescript', 'Rust', 'WebSockets', 'Docker', 'Postgres', 'Svelte'],
