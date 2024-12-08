@@ -10,7 +10,7 @@ const blogs: BlogData[] = [
         tags: ["Python", "PyTorch"],
         links: [{
             platform: 'Publication',
-            link: 'https://icpr2024.org'
+            link: 'https://link.springer.com/chapter/10.1007/978-3-031-78312-8_16'
         }], repo: `${base}/blogs/icpr2024`,
         created_at: new Date(2024, 3, 10),
         id: 0,
