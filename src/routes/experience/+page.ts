@@ -4,6 +4,17 @@ import { base } from '$app/paths';
 
 const experience: ExperienceData[] = [
     {
+        title: 'Apple - Intern',
+        description: "Part of the Rapid Application Development team.",
+        image: '<img src=https://logocreator.io/wp-content/uploads/2023/11/apple-inc-minimalism-logo-simple-wallpaper-preview.jpg class="h-44 bg-[#d61f28] w-full object-contain" />',
+        repo: undefined,
+        tags: [""],
+        links: [],
+        from: new Date(2024, 0, 13),
+        to: new Date(2024, 5, 29),
+        id: 0
+    },
+    {
         title: 'Wells Fargo - Intern',
         description: "Built two VSCode extensions for developers to reduce manual overhead. <u>Proxy Orchestrator</u> to automatically route other extensions' traffic and <u>Salesforce Diff Viewer</u> to integrate Git diff viewer with Salesforce Org.",
         image: '<img src=https://www.wellsfargo.com/assets/images/logos/wellsfargo/logo_974x1050.png class="h-44 bg-[#d61f28] w-full object-contain" />',
