@@ -23,7 +23,7 @@ const experience: ExperienceData[] = [
         links: [],
         from: new Date(2024, 5, 3),
         to: new Date(2024, 7, 26),
-        id: 0
+        id: 1
     },
     {
         title: 'Sugar Labs - Intern (GSoC 2023)',
@@ -38,7 +38,7 @@ const experience: ExperienceData[] = [
         // from: new Date(2023, 4, 29), //actual
         from: new Date(2023, 5, 1),
         to: new Date(2023, 7, 28),
-        id: 1
+        id: 2
     },
     {
         title: 'Centre for Railway Information Systems (CRIS) - Intern',
@@ -49,7 +49,7 @@ const experience: ExperienceData[] = [
         links: [],
         from: new Date(2023, 4, 27),
         to: new Date(2023, 6, 21),
-        id: 2
+        id: 3
     },
     {
         title: 'Sugar Labs - Intern (GSoC 2022)',
@@ -63,7 +63,7 @@ const experience: ExperienceData[] = [
         }],
         from: new Date(2022, 5, 13),
         to: new Date(2022, 8, 12),
-        id: 3
+        id: 4
     },
 ];
 
