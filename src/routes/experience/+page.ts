@@ -6,12 +6,12 @@ const experience: ExperienceData[] = [
     {
         title: 'Apple - Intern',
         description: "Part of the Rapid Application Development team.",
-        image: '<img src=https://logocreator.io/wp-content/uploads/2023/11/apple-inc-minimalism-logo-simple-wallpaper-preview.jpg class="h-44 bg-[#d61f28] w-full object-contain" />',
+        image: '<img src=https://logocreator.io/wp-content/uploads/2023/11/apple-inc-minimalism-logo-simple-wallpaper-preview.jpg />',
         repo: undefined,
         tags: [""],
         links: [],
-        from: new Date(2024, 0, 13),
-        to: new Date(2024, 5, 29),
+        from: new Date(2025, 0, 13),
+        to: new Date(2025, 5, 29),
         id: 0
     },
     {
