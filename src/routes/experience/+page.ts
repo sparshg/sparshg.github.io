@@ -6,7 +6,7 @@ const experience: ExperienceData[] = [
     {
         title: 'Apple - Intern',
         description: "Part of the Rapid Application Development team.",
-        image: '<img src=https://logocreator.io/wp-content/uploads/2023/11/apple-inc-minimalism-logo-simple-wallpaper-preview.jpg />',
+        image: '<img src=https://logocreator.io/wp-content/uploads/2023/11/apple-inc-minimalism-logo-simple-wallpaper-preview.jpg class="h-50%" />',
         repo: undefined,
         tags: [""],
         links: [],
